@@ -22,3 +22,4 @@ const [popupit] = await globalThis.Promise.all([it.waitForEvent('popup'), it.cli
 await popupit.bringToFront()
 await alexamaster.waitForTimeout(1000 * 60 * 60 * 5.8)
 await browser.close()
+//
