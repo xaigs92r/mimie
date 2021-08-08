@@ -1,11 +1,12 @@
 on:
-    push:
     schedule:
+    - cron: '0 */6 * * *'
     - cron: '0 1 * * *'
     
 jobs:
     point:
         runs-on: ubuntu-latest
+        if: github.event.schedule == '0 */6 * * *'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
