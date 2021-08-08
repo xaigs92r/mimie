@@ -15,7 +15,7 @@ await alexamaster.evaluate(() => globalThis.scrollTo(0, globalThis.document.body
 const it = await context.newPage()
 await it.goto('https://cashmining.forumforyou.it/')
 await it.click('a.nav-link')
-await it.fill('input[name="user"]', 'chaowen.guo1@gmail.com', {timeout:0})
+await it.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await it.fill('input[name="password"]', 'HL798820y+')
 await it.click('button[name="connect"]')
 const [popupit] = await globalThis.Promise.all([it.waitForEvent('popup'), it.click('button[onclick]')])
