@@ -1,7 +1,7 @@
 import {chromium} from 'playwright-chromium'
 
 const browser = await chromium.launch({executablePath:'/usr/bin/google-chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
-const context = await browser.newContext()
+const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 await alexamaster.goto('https://cashmining.me/')
 await alexamaster.click('a.nav-link')
@@ -12,6 +12,5 @@ await alexamaster.click('a#wmp-start')
 const [popup] = await globalThis.Promise.all([alexamaster.waitForEvent('popup'), alexamaster.click('button[onclick]')])
 await popup.bringToFront()
 globalThis.setInterval(async () => globalThis.console.log(await alexamaster.innerText('p#wmp-hashes')), 1000 * 60 * 2)
-//await alexamaster.waitForTimeout(1000 * 60 * 2)
-//await popup.screenshot({path:'ha.png'})
-//await browser.close()
+await alexamaster.waitForTimeout(1000 * 60 * 10)
+await browser.close()
