@@ -15,8 +15,6 @@ jobs:
               npm install playwright-chromium
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               xvfb-run node ha.js
-              git add ha.png
-              git config user.name dummy
-              git config user.email dummy
-              git commit --allow-empty-message -m ''
-              git push
+        - uses: actions/upload-artifact@main
+          with:
+              path: ha.png
