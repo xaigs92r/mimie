@@ -1,1 +1,22 @@
+on: push
 
+jobs:
+    point:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 16.x
+        - env:
+              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+              DEBUG: pw:api
+          run: |
+              npm install playwright-chromium
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              xvfb-run node ha.js
+              git add ha.png
+              git config user.name dummy
+              git config user.email dummy
+              git commit --allow-empty-message -m ''
+              git push
