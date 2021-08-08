@@ -12,6 +12,7 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
+              dpkg -S ffmpeg
               npm install playwright-chromium
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               xvfb-run node ha.js
