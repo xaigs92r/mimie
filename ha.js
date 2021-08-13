@@ -2,6 +2,7 @@ import {chromium} from 'playwright-chromium'
 
 const browser = await chromium.launch({executablePath:'/usr/bin/google-chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
+context.setDefaultTimeout(0)
 const alexamaster = await context.newPage()
 await alexamaster.goto('https://cashmining.me/')
 await alexamaster.click('a.nav-link')
