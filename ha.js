@@ -4,7 +4,7 @@ const browser = await chromium.launch({executablePath:'/usr/bin/google-chrome', 
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 await alexamaster.goto('https://cashmining.me/')
-const form = await alexamaster.$('div#login_box')
+const form = await alexamaster.$('form')
 await alexamaster.$('head').then(_ => _.evaluateHandle(_ => _.remove()))
 await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle(_ => _.innerHTML = ''))
 await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle((_, form) => _.append(form), form))
