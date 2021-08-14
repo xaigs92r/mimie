@@ -8,6 +8,7 @@ await alexamaster.$('div#login_box').then(_ => _.evaluateHandle(_ => {_.style.op
 await alexamaster.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await alexamaster.fill('input[name="password"]', 'HL798820y+')
 await alexamaster.dispatchEvent('button[name="connect"]', 'click')
+await alexamaster.waitForNavigation()
 /*await alexamaster.click('a#wmp-start')
 const [popup] = await globalThis.Promise.all([alexamaster.waitForEvent('popup'), alexamaster.click('button[onclick]')])
 await popup.bringToFront()
