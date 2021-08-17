@@ -11,7 +11,7 @@ await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle((_, form) =
 await alexamaster.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await alexamaster.fill('input[name="password"]', 'HL798820y+')
 const client = await context.newCDPSession(alexamaster)
-const {result} = await client.send('Runtime.evaluate', {expression: 'window'})
+const {result} = await client.send('Runtime.evaluate', {expression:'window', objectGroup:'foobar'})
 const {listeners} = await client.send('DOMDebugger.getEventListeners', {objectId: result.objectId})
 console.log(listeners)                                
 await alexamaster.dispatchEvent('button[name="connect"]', 'click')
