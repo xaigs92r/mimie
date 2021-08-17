@@ -1,6 +1,6 @@
 import {chromium} from 'playwright-chromium'
 
-const browser = await chromium.launch({executablePath:'/usr/bin/google-chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
+const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 await alexamaster.goto('https://cashmining.me/')
@@ -10,6 +10,9 @@ await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle(_ => _.inne
 await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle((_, form) => _.append(form), form))
 await alexamaster.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await alexamaster.fill('input[name="password"]', 'HL798820y+')
+await alexamaster.evaluate(() => for (const [key,value] of Object.entries(getEventListeners(document)))
+                                     for (const _ of value) document.removeEventListener(key, _.listener))
+console.log(await alexamaster.evaluate(() => getEventListeners(document)))                                 
 await alexamaster.dispatchEvent('button[name="connect"]', 'click')
 /*await alexamaster.click('a#wmp-start')
 const [popup] = await globalThis.Promise.all([alexamaster.waitForEvent('popup'), alexamaster.click('button[onclick]')])
