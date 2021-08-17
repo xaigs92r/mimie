@@ -10,7 +10,7 @@ await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle(_ => _.inne
 await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle((_, form) => _.append(form), form))
 await alexamaster.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await alexamaster.fill('input[name="password"]', 'HL798820y+')
-await alexamaster.evaluate(() => {for (const [key,value] of Object.entries(getEventListeners(document)))
+await alexamaster.evaluate(() => {for (const [key,value] of Object.entries(globalThis.getEventListeners(document)))
                                      for (const _ of value) document.removeEventListener(key, _.listener)})
 console.log(await alexamaster.evaluate(() => getEventListeners(document)))                                 
 await alexamaster.dispatchEvent('button[name="connect"]', 'click')
