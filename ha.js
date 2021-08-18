@@ -14,7 +14,7 @@ const client = await context.newCDPSession(alexamaster)
 const {result} = await client.send('Runtime.evaluate', {expression:'globalThis', objectGroup:'handler'}) //https://stackoverflow.com/questions/63059096/chrome-devtools-protocol-how-to-get-click-event-handler-name-of-a-node
 const {listeners} = await client.send('DOMDebugger.getEventListeners', {objectId:result.objectId})
 console.log(listeners)
-const {resultt} = await client.send('Runtime.evaluate', {expression:'globalThis', objectGroup:'handler'})
+const {resultt} = await client.send('Runtime.evaluate', {expression:'globalThis', objectGroup:'handlerr'})
 const {after} = await client.send('DOMDebugger.getEventListeners', {objectId:resultt.objectId})
 console.log(after)
 await client.send('Runtime.releaseObjectGroup', {objectGroup:'handler'})
