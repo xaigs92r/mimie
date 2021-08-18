@@ -15,7 +15,7 @@ const {result} = await client.send('Runtime.evaluate', {expression:'globalThis',
 const {listeners} = await client.send('DOMDebugger.getEventListeners', {objectId:result.objectId})
 for (const {type, handler} of listeners) alexamaster.evaluate(({type,handler}) => globalThis.removeEventListener(type,handler), {type,handler})
 const {after} = await client.send('DOMDebugger.getEventListeners', {objectId:result.objectId})
-for (const {type, handler} of after) console.log(type, handler)
+console.log(after)
 await client.send('Runtime.releaseObjectGroup', {objectGroup:'handler'})
 await alexamaster.dispatchEvent('button[name="connect"]', 'click')
 /*await alexamaster.click('a#wmp-start')
