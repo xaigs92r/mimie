@@ -13,7 +13,7 @@ await alexamaster.fill('input[name="password"]', 'HL798820y+')
 const client = await context.newCDPSession(alexamaster)
 const {result} = await client.send('Runtime.evaluate', {expression:'globalThis', objectGroup:'handler'}) //https://stackoverflow.com/questions/63059096/chrome-devtools-protocol-how-to-get-click-event-handler-name-of-a-node
 const {listeners} = await client.send('DOMDebugger.getEventListeners', {objectId:result.objectId})
-for (const {type, handler} of listeners) alexamaster.evaluate((type, handler) => globalThis.removeEventListener(type, handler), type, handler)
+for (const {type, handler} of listeners) alexamaster.evaluate(({type,handler}) => globalThis.removeEventListener(type,handler), {type,handler})
 const {after} = await client.send('DOMDebugger.getEventListeners', {objectId:result.objectId})
 for (const {type, handler} of after) console.log(type, handler)
 await client.send('Runtime.releaseObjectGroup', {objectGroup:'handler'})
