@@ -11,10 +11,10 @@ await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle((_, form) =
 await alexamaster.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await alexamaster.fill('input[name="password"]', 'HL798820y+')
 const client = await context.newCDPSession(alexamaster)
-const {result} = await client.send('Runtime.evaluate', {expression:'window', objectGroup:'foobar'}) //https://stackoverflow.com/questions/63059096/chrome-devtools-protocol-how-to-get-click-event-handler-name-of-a-node
+const {result} = await client.send('Runtime.evaluate', {expression:'globalThis', objectGroup:'handler'}) //https://stackoverflow.com/questions/63059096/chrome-devtools-protocol-how-to-get-click-event-handler-name-of-a-node
 const {listeners} = await client.send('DOMDebugger.getEventListeners', {objectId:result.objectId})
 console.log(listeners)
-await client.send('Runtime.releaseObjectGroup', {objectGroup:'foobar'})
+await client.send('Runtime.releaseObjectGroup', {objectGroup:'handler'})
 await alexamaster.dispatchEvent('button[name="connect"]', 'click')
 /*await alexamaster.click('a#wmp-start')
 const [popup] = await globalThis.Promise.all([alexamaster.waitForEvent('popup'), alexamaster.click('button[onclick]')])
