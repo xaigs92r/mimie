@@ -1,5 +1,4 @@
 import {chromium} from 'playwright-chromium'
-import process from 'process'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
