@@ -4,7 +4,7 @@ on:
     - cron: '0 1 * * *'
     
 jobs:
-    point:
+    build:
         runs-on: ubuntu-latest
         if: github.event.schedule == '0 */3 * * *'
         steps:
