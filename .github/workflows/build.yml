@@ -6,7 +6,7 @@ on:
     
 jobs:
     build:
-        timeout-minutes: 3
+        timeout-minutes: 2
         runs-on: ubuntu-latest
         #if: github.event.schedule == '0 */3 * * *'
         steps:
