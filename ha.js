@@ -4,7 +4,7 @@ const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 const client = await context.newCDPSession(alexamaster)
-await client.send('Emulation.setScriptExecutionDisabled', true)
+await client.send('Emulation.setScriptExecutionDisabled', {value:true})
 await alexamaster.goto('https://cashmining.me/')
 const form = await alexamaster.$('form')
 await alexamaster.$('head').then(_ => _.evaluateHandle(_ => _.remove()))
@@ -13,7 +13,7 @@ await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle((_, form) =
 await alexamaster.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await alexamaster.fill('input[name="password"]', 'HL798820y+')
 await alexamaster.click('button[name="connect"]')
-await client.send('Emulation.setScriptExecutionDisabled', false)
+await client.send('Emulation.setScriptExecutionDisabled', {value:false})
 //const client = await context.newCDPSession(alexamaster)
 //const {result} = await client.send('Runtime.evaluate', {expression:'globalThis', includeCommandLineAPI:true, objectGroup:'handler'}) //https://stackoverflow.com/questions/63059096/chrome-devtools-protocol-how-to-get-click-event-handler-name-of-a-node
 //const {listeners} = await client.send('DOMDebugger.getEventListeners', {objectId:result.objectId})
