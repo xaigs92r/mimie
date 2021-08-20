@@ -3,7 +3,6 @@ import {chromium} from 'playwright-chromium'
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
-await alexamaster.route('**/suv4.js', route => route.abort())
 const client = await context.newCDPSession(alexamaster)
 await client.send('Emulation.setScriptExecutionDisabled', {value:true})
 await alexamaster.goto('https://cashmining.me/')
