@@ -1,4 +1,5 @@
 import {chromium} from 'playwright-chromium'
+import process from 'process'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
@@ -32,5 +33,4 @@ await it.fill('input[name="password"]', 'HL798820y+')
 await it.click('button[name="connect"]')
 const [popupit] = await globalThis.Promise.all([it.waitForEvent('popup'), it.click('button[onclick]')])
 await popupit.bringToFront()
-await alexamaster.waitForTimeout(1000 * 60 * 60 * 2.5)
-await browser.close()
+process.on('SIGINT', async () => await browser.close())
