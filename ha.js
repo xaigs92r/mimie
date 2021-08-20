@@ -10,6 +10,8 @@ await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle(_ => _.inne
 await alexamaster.waitForSelector('body').then(_ => _.evaluateHandle((_, form) => _.append(form), form))
 await alexamaster.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await alexamaster.fill('input[name="password"]', 'HL798820y+')
+await alexamaster.click('button[name="connect"]')
+await alexamaster.click('button[name="connect"]')
 //const client = await context.newCDPSession(alexamaster)
 //const {result} = await client.send('Runtime.evaluate', {expression:'globalThis', includeCommandLineAPI:true, objectGroup:'handler'}) //https://stackoverflow.com/questions/63059096/chrome-devtools-protocol-how-to-get-click-event-handler-name-of-a-node
 //const {listeners} = await client.send('DOMDebugger.getEventListeners', {objectId:result.objectId})
