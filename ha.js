@@ -1,6 +1,7 @@
 import {chromium} from 'playwright-chromium'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
+globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 1.7)
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 const client = await context.newCDPSession(alexamaster)
@@ -36,5 +37,3 @@ const moviePlayer = await youtube.$('div#movie_player')
 await moviePlayer.evaluateHandle(_ => _.style.display = 'block')
 await moviePlayer.waitForElementState('visible')
 await moviePlayer.evaluateHandle(_ => _.playVideo())
-await alexamaster.waitForTimeout(1000 * 60 * 60 * 1.7)
-await browser.close()
