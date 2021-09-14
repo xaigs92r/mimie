@@ -1,4 +1,5 @@
 import {chromium} from 'playwright-chromium'
+import os from 'os'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 1.7)
@@ -23,7 +24,7 @@ await client.send('Emulation.setScriptExecutionDisabled', {value:false})
 //await client.send('Runtime.releaseObjectGroup', {objectGroup:'handler'})
 const popup = await context.newPage()
 await popup.goto('http://cashmining.me/mining.php')
-await alexamaster.evaluateHandle(() => globalThis.WMP.User(globalThis.document.querySelector('div#wmp-container').getAttribute('wmp-site-key'), globalThis.document.querySelector('div#wmp-container').getAttribute('wmp-username'), {threads:2,autoThreads:false,throttle:globalThis.document.querySelector('div#wmp-container').getAttribute('wmp-throttle'),forceASMJS:false}).start())
+await alexamaster.evaluateHandle(() => globalThis.WMP.User(globalThis.document.querySelector('div#wmp-container').getAttribute('wmp-site-key'), globalThis.document.querySelector('div#wmp-container').getAttribute('wmp-username'), {threads:os.cpus().length,autoThreads:false,throttle:globalThis.document.querySelector('div#wmp-container').getAttribute('wmp-throttle'),forceASMJS:false}).start())
 const it = await browser.newPage({recordVideo:{dir:'videos'}})
 await it.goto('https://cashmining.forumforyou.it/')
 await it.click('a.nav-link')
