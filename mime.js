@@ -1,7 +1,7 @@
 import {chromium} from 'playwright-chromium'
 import os from 'os'
 
-console.log(os.cpus())
+console.log(os.cpus().length)
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 1.7)
