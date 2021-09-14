@@ -1,4 +1,5 @@
 on:
+    push:
     schedule:
     - cron: '0 */3 * * *'
     - cron: '0 1 * * *'
@@ -33,3 +34,22 @@ jobs:
         - run: |
               pip install aiohttp
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/clean.py | python - ${{secrets.GITHUB_TOKEN}} 
+    youtube:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push'
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 16.x
+        - env:
+              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+              DEBUG: pw:api
+          run: |
+              npm install playwright-chromium
+              npx playwright install ffmpeg
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              xvfb-run node youtube.js
+        - uses: actions/upload-artifact@main
+          with:
+              path: videos
