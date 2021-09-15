@@ -11,8 +11,7 @@ await ytuner.click('a.form-submit')
 await ytuner.waitForNavigation()
 await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 await ytuner.click('a[href^="work"]')
-await ytuner.waitForTimeout(1000 * 60 * 2)
-/*while (true)
+while (true)
 {
     if (globalThis.Object.is(await ytuner.title(), 'No More Work Today!')) break
     const id = await ytuner.waitForSelector('input#code').then(_ => _.getAttribute('value'))
@@ -48,6 +47,6 @@ await ytuner.waitForTimeout(1000 * 60 * 2)
     await select.selectOption(option[0])
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
     await ytuner.click('a:text-is("Complete Work")')
-}*/
+}
 await browser.close()
 //https://www.ytuner.com/dashboard/credits/work/finish//
