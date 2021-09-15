@@ -53,4 +53,3 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     await ytuner.click('a:text-is("Complete Work")')
 }
 await browser.close()
-//https://www.ytuner.com/dashboard/credits/work/finish//
