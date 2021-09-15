@@ -56,7 +56,7 @@ jobs:
     #          path: videos
     ytuner:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */1 * * *'
+        #if: github.event.schedule == '0 */1 * * *'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
