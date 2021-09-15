@@ -4,13 +4,10 @@ import url from 'url'
 import moment from 'moment'
 import process from 'process'
 
-const browser = await chromium.launch({executablePath:'/usr/bin/google-chrome', args:['--disable-gpu']})
+const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const context = await browser.newContext()
 const ytuner = await context.newPage()
-await ytuner.goto('http://adfoc.us/6581421')
-await new globalThis.Promise(_ => globalThis.setTimeout(_, 10 * 1000))
-await ytuner.click('img[src="/images/serve/skip.png"]')
-/*await ytuner.goto('https://www.ytuner.com/user/login')
+await ytuner.goto('https://www.ytuner.com/user/login')
 await ytuner.click('a:text-is("Agree")')
 await ytuner.fill('input#email','chaowen.guo1@gmail.com')
 await ytuner.fill('input#pass', process.argv[2])
@@ -55,6 +52,6 @@ while (true)
     await select.selectOption(option[0])
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
     await ytuner.click('a:text-is("Complete Work")')
-}*/
+}
 await browser.close()
 //https://www.ytuner.com/dashboard/credits/work/finish//
