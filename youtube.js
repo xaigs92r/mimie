@@ -4,6 +4,7 @@ const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 await alexamaster.goto('https://accounts.google.com/')
+await alexamaster.fill('input#Email', 'chaowen.guo1@gmail.com')
 /*await alexamaster.fill('input[name="password"]', 'HL798820y+')
 await alexamaster.click('button[type="submit"]')
 await alexamaster.waitForLoadState()
