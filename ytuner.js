@@ -12,11 +12,7 @@ await ytuner.waitForNavigation()
 await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 await ytuner.click('a[href^="work"]')
 await ytuner.waitForTimeout(1000 * 60 * 2)
-/*await ytuner.click('a:has-text("Get Credits")')
-await new globalThis.Promise(_ => globalThis.setTimeout(_, 10 * 1000))
-await ytuner.click('a[href="https://www.ytuner.com/dashboard/credits/work"]')
-await ytuner.click('a:text-is("Start Now Here")')
-while (true)
+/*while (true)
 {
     if (globalThis.Object.is(await ytuner.title(), 'No More Work Today!')) break
     const id = await ytuner.waitForSelector('input#code').then(_ => _.getAttribute('value'))
