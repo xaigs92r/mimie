@@ -50,6 +50,8 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     }
     await select.selectOption(option[0])
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
+    while (!globalThis.Object.is(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()), 0)) await youtube.waitForTimeout(1000 * 60)
+    await youtube.close()
     await ytuner.click('a:text-is("Complete Work")')
 }
 await browser.close()
