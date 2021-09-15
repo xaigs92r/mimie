@@ -11,6 +11,7 @@ await ytuner.click('a.form-submit')
 await ytuner.waitForNavigation()
 await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 await ytuner.click('a[href^="work"]')
+await ytuner.waitForNavigation()
 while (true)
 {
     if (globalThis.Object.is(await ytuner.title(), 'No More Work Today!')) break
