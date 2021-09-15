@@ -8,8 +8,8 @@ await ytuner.click('a.tos-agree')
 await ytuner.fill('input#email','ga0961663@otc.edu')
 await ytuner.fill('input#pass', 'HL798820y+')
 await ytuner.click('a.form-submit')
-await ytuner.waitForLoadState()
-//await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
+await ytuner.waitForTimeout(1000 * 60)
+await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 await ytuner.waitForTimeout(1000 * 60 * 2)
 /*await ytuner.click('a:has-text("Get Credits")')
 await new globalThis.Promise(_ => globalThis.setTimeout(_, 10 * 1000))
@@ -52,5 +52,5 @@ while (true)
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
     await ytuner.click('a:text-is("Complete Work")')
 }*/
-await browser.close()//
+await browser.close()
 //https://www.ytuner.com/dashboard/credits/work/finish//
