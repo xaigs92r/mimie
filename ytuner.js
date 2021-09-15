@@ -1,7 +1,7 @@
 import {chromium} from 'playwright-chromium'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
-const context = await browser.newContext()
+const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const ytuner = await context.newPage()
 await ytuner.goto('https://www.ytuner.com/user/login')
 await ytuner.click('a:text-is("Agree")')
