@@ -52,5 +52,5 @@ while (true)
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
     await ytuner.click('a:text-is("Complete Work")')
 }*/
-await browser.close()
+await browser.close()//
 //https://www.ytuner.com/dashboard/credits/work/finish//
