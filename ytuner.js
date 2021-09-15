@@ -42,6 +42,7 @@ while (true)
     let option = [null, globalThis.Number.POSITIVE_INFINITY]
     const select = await ytuner.$('select#time')
     await select.evaluateHandle(_ => _.style.display = 'block')
+    await select.waitForElementState('visible')
     for await (const _ of await select.$$(':scope>option').then(_ => _.map(_ => _.getAttribute('value'))))
     {
         const distance = globalThis.Math.abs(moment.duration(_) - moment.duration(response.items[0].contentDetails.duration))
