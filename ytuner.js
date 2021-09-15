@@ -15,7 +15,7 @@ while (true)
 {
     if (globalThis.Object.is(await ytuner.title(), 'No More Work Today!')) break
     const id = await ytuner.waitForSelector('input#code').then(_ => _.getAttribute('value'))
-    const youtube = await ytuner.newPage()
+    const youtube = await context.newPage()
     await youtube.goto('https://www.youtube.com/watch?v=' + id)
     const moviePlayer = await popup.$('div#movie_player')
     await moviePlayer.evaluateHandle(_ => _.style.display = 'block')
