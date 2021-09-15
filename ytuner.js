@@ -14,7 +14,7 @@ await ytuner.click('a[href^="work"]')
 await ytuner.waitForLoadState()
 while (true)
 {
-    if (globalThis.Object.is(await ytuner.title(), 'No More Work Today!')) break
+    if (globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboard/credits/work/finish')) break
     const id = await ytuner.waitForSelector('input#code').then(_ => _.getAttribute('value'))
     const youtube = await context.newPage()
     await youtube.goto('https://www.youtube.com/watch?v=' + id)
