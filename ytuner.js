@@ -19,6 +19,7 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     const moviePlayer = await youtube.$('div#movie_player')
     await moviePlayer.evaluateHandle(_ => _.style.display = 'block')
     await moviePlayer.waitForElementState('visible')
+    await moviePlayer.evaluateHandle(_ => _.playVideo())
     const duration = await moviePlayer.evaluateHandle(_ => _.getDuration()).then(_ => _.jsonValue())
     console.log(duration)
     const startStep = await ytuner.$('button#start_step')
