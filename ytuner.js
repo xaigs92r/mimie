@@ -4,7 +4,8 @@ const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const ytuner = await context.newPage()
 await ytuner.goto('https://www.ytuner.com/user/login')
-await ytuner.click('a:text-is("Agree")')
+await ytuner.waitForTimeout(1000 * 60 * 2)
+/*await ytuner.click('a:text-is("Agree")')
 await ytuner.fill('input#email','chaowen.guo1@gmail.com')
 await ytuner.fill('input#pass', process.argv[2])
 await ytuner.click('a:text-is("Login")')
@@ -48,6 +49,6 @@ while (true)
     await select.selectOption(option[0])
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
     await ytuner.click('a:text-is("Complete Work")')
-}
+}*/
 await browser.close()
 //https://www.ytuner.com/dashboard/credits/work/finish//
