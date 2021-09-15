@@ -46,7 +46,7 @@ while (true)
     for await (const _ of await select.$$(':scope>option').then(_ => _.map(_ => _.getAttribute('value'))))
     {
         const [hour, minute, second] = _.split(':').map(globalThis.Number)
-	    const distance = globalThis.Math.abs(hour * 3600 + minute * 60 + second - duration)
+	const distance = globalThis.Math.abs(hour * 3600 + minute * 60 + second - duration)
         if (distance < option[1]) option = [_, distance]
     }
     await select.selectOption(option[0])
