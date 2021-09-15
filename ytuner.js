@@ -53,11 +53,11 @@ await ytuner.click('a[href^="work"]')
     console.log(option[0])
     await select.selectOption(option[0])
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
-    while (!globalThis.Object.is(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()), 0))
+    /*while (!globalThis.Object.is(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()), 0))
     {
          await youtube.waitForTimeout(1000 * 60)
     	 console.log(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()))
-    }
+    }*/
     await youtube.close()
     await ytuner.click('a#submit')
     //await ytuner.waitForNavigation()
