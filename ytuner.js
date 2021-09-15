@@ -11,8 +11,8 @@ await ytuner.click('a.form-submit')
 await ytuner.waitForNavigation()
 await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 await ytuner.click('a[href^="work"]')
-while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboard/credits/work/finish'))
-{
+//while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboard/credits/work/finish'))
+//{
     const id = await ytuner.waitForSelector('input#code').then(_ => _.getAttribute('value'))
     const youtube = await context.newPage()
     await youtube.goto('https://www.youtube.com/watch?v=' + id)
@@ -52,13 +52,13 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     console.log(option[0])
     await select.selectOption(option[0])
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
-    while (!globalThis.Object.is(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()), 0))
-    {
-         await youtube.waitForTimeout(1000 * 60)
-	 console.log(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()))
-    }
+    //while (!globalThis.Object.is(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()), 0))
+    //{
+    //     await youtube.waitForTimeout(1000 * 60)
+    //	 console.log(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()))
+    //}
     await youtube.close()
     await ytuner.click('a#submit')
     //await ytuner.waitForNavigation()
-}
+//}
 await browser.close()
