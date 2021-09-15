@@ -12,12 +12,10 @@ await alexamaster.evaluateHandle(() => globalThis.document.starter.submit())
 //{
     const [popup] = await globalThis.Promise.all([alexamaster.waitForEvent('popup'), alexamaster.click('a[onclick^="openWin"]')])
     await popup.waitForLoadState()
-    console.log(await popup.content())
-    //await popup.click('yt-formatted-string.ytd-subscribe-button-renderer')
+    await popup.click('yt-formatted-string.ytd-subscribe-button-renderer')
     await alexamaster.waitForTimeout(1000 * 60)
     await alexamaster.click('a[onclick^="confirmAll"]')
     await alexamaster.waitForLoadState()
 //}
 await alexamaster.waitForTimeout(1000 * 60 * 2)
 await browser.close()
-//
