@@ -1,7 +1,6 @@
 import {chromium} from 'playwright-chromium'
 
-const browser = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
-const context = await browser.newContext({recordVideo:{dir:'videos'}})
+const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false, recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 await alexamaster.goto('https://www.youtube.com/watch?v=VZ9Fo6SWJs0')
 //await alexamaster.click('div#passwordNext')
@@ -19,4 +18,4 @@ await alexamaster.evaluateHandle(() => globalThis.document.starter.submit())
     await alexamaster.waitForLoadState()
 //}*/
 await alexamaster.waitForTimeout(1000 * 60 * 2)
-await browser.close()
+await context.close()
