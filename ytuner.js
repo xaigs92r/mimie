@@ -49,6 +49,7 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
 	const distance = globalThis.Math.abs(hour * 3600 + minute * 60 + second - duration)
         if (distance < option[1]) option = [_, distance]
     }
+    console.log(option[0])
     await select.selectOption(option[0])
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
     while (!globalThis.Object.is(await moviePlayer.evaluateHandle(_ => _.getPlayerState()).then(_ => _.jsonValue()), 0))
@@ -58,5 +59,6 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     }
     await youtube.close()
     await ytuner.click('a#submit')
+    await ytuner.waitForNavigation()
 }
 await browser.close()
