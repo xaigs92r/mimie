@@ -1,6 +1,6 @@
 import {chromium} from 'playwright-chromium'
 
-const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false, recordVideo:{dir:'videos'}})
+const context = await chromium.launchPersistentContext('~/google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false, recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 await alexamaster.goto('https://www.youtube.com/watch?v=VZ9Fo6SWJs0')
 //await alexamaster.click('div#passwordNext')
