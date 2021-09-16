@@ -1,5 +1,6 @@
 import {chromium} from 'playwright-chromium'
 import os from 'os'
+import process from 'process'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 1.7)
@@ -14,7 +15,7 @@ await alexamaster.$('head').then(_ => _.evaluateHandle(_ => _.remove()))
 await alexamaster.$('body').then(_ => _.evaluateHandle(_ => _.innerHTML = ''))
 await alexamaster.$('body').then(_ => _.evaluateHandle((_, form) => _.append(form), form))
 await alexamaster.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
-await alexamaster.fill('input[name="password"]', 'HL798820y+')
+await alexamaster.fill('input[name="password"]', process.argv.at(2))
 await alexamaster.click('button[name="connect"]')
 await client.send('Emulation.setScriptExecutionDisabled', {value:false})
 //const client = await context.newCDPSession(alexamaster)
@@ -29,7 +30,7 @@ const it = await browser.newPage({recordVideo:{dir:'videos'}})
 await it.goto('https://cashmining.forumforyou.it/')
 await it.click('a.nav-link')
 await it.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
-await it.fill('input[name="password"]', 'HL798820y+')
+await it.fill('input[name="password"]', process.argv.at(2))
 await it.click('button[name="connect"]')
 const [popupit] = await globalThis.Promise.all([it.waitForEvent('popup'), it.click('button[onclick]')])
 const youtube = await browser.newPage({recordVideo:{dir:'videos'}})
