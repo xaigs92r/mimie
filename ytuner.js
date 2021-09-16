@@ -22,6 +22,7 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     catch
     {
 	await browser.close()
+	process.exit(0)
     }
     const youtube = await context.newPage()
     await youtube.goto('https://www.youtube.com/watch?v=' + id)
