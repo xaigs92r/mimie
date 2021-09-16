@@ -5,6 +5,7 @@ const alexamaster = await context.newPage()
 await alexamaster.goto('https://www.ytpals.com/login/final/UCkKr6PX7hPxw0E7vYXeDbvg/')
 await alexamaster.fill('input[name="password"]', 'HL798820y+')
 await alexamaster.click('button[type="submit"]')
+await alexamaster.waitForNavigation()
 await alexamaster.evaluateHandle(() => globalThis.document.starter.submit())
 //for (const _ of globalThis.Array(3).keys())
 //{
