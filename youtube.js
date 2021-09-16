@@ -14,7 +14,6 @@ for (const _ of globalThis.Array(2).keys())
     await alexamaster.waitForTimeout(1000 * 40)
     await popup.close()
     await alexamaster.click('a[onclick^="confirmAll"]')
-    await alexamaster.waitForTimeout(1000 * 60)
+    await alexamaster.waitForNavigation()
 }
-await alexamaster.waitForTimeout(1000 * 60)
 await context.close()
