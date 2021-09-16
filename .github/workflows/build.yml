@@ -51,7 +51,7 @@ jobs:
               npm install playwright-chromium
               npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
-              xvfb-run node youtube.js
+              xvfb-run node youtube.js ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
               path: videos
