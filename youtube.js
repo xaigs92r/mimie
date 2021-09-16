@@ -13,6 +13,7 @@ for (const _ of globalThis.Array(2).keys())
     await popup.click('yt-formatted-string.ytd-subscribe-button-renderer')
     await alexamaster.waitForTimeout(1000 * 40)
     await alexamaster.click('a[onclick^="confirmAll"]')
+    await alexamaster.waitForNavigation(
 }
 await alexamaster.waitForTimeout(1000 * 60)
 await context.close()
