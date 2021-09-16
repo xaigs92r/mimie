@@ -1,4 +1,5 @@
 import {chromium} from 'playwright-chromium'
+import process from 'process'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
@@ -6,7 +7,7 @@ const ytuner = await context.newPage()
 await ytuner.goto('https://www.ytuner.com/user/login')
 await ytuner.click('a.tos-agree')
 await ytuner.fill('input#email','ga0961663@otc.edu')
-await ytuner.fill('input#pass', 'HL798820y+')
+await ytuner.fill('input#pass', process.argv.at(2))
 await ytuner.click('a.form-submit')
 await ytuner.waitForNavigation()
 await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
