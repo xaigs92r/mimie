@@ -12,6 +12,7 @@ for (const _ of globalThis.Array(2).keys())
     const [popup] = await globalThis.Promise.all([alexamaster.waitForEvent('popup'), alexamaster.click('a[onclick^="openWin"]')])
     await popup.click('yt-formatted-string.ytd-subscribe-button-renderer')
     await alexamaster.waitForTimeout(1000 * 40)
+    await popup.close()
     await alexamaster.click('a[onclick^="confirmAll"]')
     await alexamaster.waitForTimeout(1000 * 60)
 }
