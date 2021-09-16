@@ -2,10 +2,9 @@ import {chromium} from 'playwright-chromium'
 import process from 'process'
 
 const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false, recordVideo:{dir:'videos'}})
-
-async function main(_)
-{    
-    const alexamaster = await context.newPage()
+const alexamaster = await context.newPage()
+for (const _ of ['sonuker', 'subpals'])
+{     
     await alexamaster.goto(`https://www.${_}.com/login/final/UCkKr6PX7hPxw0E7vYXeDbvg/`)
     await alexamaster.fill('input[name="password"]', process.argv.at(2))
     await alexamaster.click('button[type="submit"]')
@@ -21,6 +20,4 @@ async function main(_)
         await alexamaster.waitForNavigation()
     }
 }
-
-await globalThis.Promise.all(['sonuker', 'subpals'].map(main))
 await context.close()
