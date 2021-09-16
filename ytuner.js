@@ -11,10 +11,17 @@ await ytuner.click('a.form-submit')
 await ytuner.waitForNavigation()
 await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 await ytuner.click('a[href^="work"]')
-//for (const _ of globalThis.Array(3).keys())
 while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboard/credits/work/finish'))
 {
-    const id = await ytuner.waitForSelector('input#code').then(_ => _.getAttribute('value'))
+    let id = null
+    try
+    {
+        id = await ytuner.waitForSelector('input#code').then(_ => _.getAttribute('value'))
+    }
+    catch
+    {
+	await browser.close()
+    }
     const youtube = await context.newPage()
     await youtube.goto('https://www.youtube.com/watch?v=' + id)
     const moviePlayer = await youtube.$('div#movie_player')
