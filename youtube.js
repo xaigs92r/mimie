@@ -2,11 +2,9 @@ import {chromium} from 'playwright-chromium'
 
 const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false, recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
-await alexamaster.goto('https://www.youtube.com/watch?v=VZ9Fo6SWJs0')
-//await alexamaster.click('div#passwordNext')
-/*await alexamaster.fill('input[name="password"]', 'HL798820y+')
+await alexamaster.goto('https://www.ytpals.com/login/final/UCkKr6PX7hPxw0E7vYXeDbvg/')
+await alexamaster.fill('input[name="password"]', 'HL798820y+')
 await alexamaster.click('button[type="submit"]')
-await alexamaster.waitForLoadState()
 await alexamaster.evaluateHandle(() => globalThis.document.starter.submit())
 //for (const _ of globalThis.Array(3).keys())
 //{
@@ -16,6 +14,6 @@ await alexamaster.evaluateHandle(() => globalThis.document.starter.submit())
     await alexamaster.waitForTimeout(1000 * 60)
     await alexamaster.click('a[onclick^="confirmAll"]')
     await alexamaster.waitForLoadState()
-//}*/
+//}
 await alexamaster.waitForTimeout(1000 * 60 * 2)
 await context.close()
