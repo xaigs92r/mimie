@@ -38,7 +38,7 @@ jobs:
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/clean.py | python - ${{secrets.GITHUB_TOKEN}} 
     youtube:
         runs-on: ubuntu-latest
-        #if: github.event.schedule == '0 */12 * * *'
+        if: github.event.schedule == '0 */12 * * *'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
