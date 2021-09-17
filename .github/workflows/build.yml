@@ -76,3 +76,4 @@ jobs:
               path: |
                   videos
                   screenshot.png
+                  last.html
