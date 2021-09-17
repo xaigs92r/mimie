@@ -73,4 +73,6 @@ jobs:
               xvfb-run node ytuner.js ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
-              path: videos
+              path: |
+                  videos
+                  screenshot.png
