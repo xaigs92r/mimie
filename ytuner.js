@@ -1,5 +1,6 @@
 import {chromium} from 'playwright-chromium'
 import process from 'process'
+import {promises as fs} from 'fs'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
@@ -21,6 +22,7 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     }
     catch
     {
+	await fs.writeFile('last.html', await ytuner.content())
 	await ytuner.screenshot({path:'screenshot.png'})
 	await browser.close()
 	process.exit(0)
@@ -33,7 +35,6 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     const duration = await moviePlayer.evaluateHandle(_ => _.getDuration()).then(_ => _.jsonValue())
     console.log(duration)
     await moviePlayer.evaluateHandle(_ => _.playVideo())
-    //console.log(await youtube.waitForSelector('div#top-row.style-scope').then(_ => _.innerHTML()))
     const startStep = await ytuner.$('button#start_step')
     await startStep.getProperty('classList').then(_ => _.evaluateHandle(_ => _.remove('disabled')))
     await startStep.waitForElementState('visible')
