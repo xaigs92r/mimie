@@ -21,6 +21,7 @@ while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboa
     }
     catch
     {
+	await ytuner.screenshot({path:'screenshot.png'})
 	await browser.close()
 	process.exit(0)
     }
