@@ -13,9 +13,9 @@ await ytuner.click('a.form-submit')
 await ytuner.waitForNavigation()
 await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 await ytuner.click('a[href^="work"]')
-while (!globalThis.Object.is(await ytuner.url(), 'https://www.ytuner.com/dashboard/credits/work/finish'))
+while (!globalThis.Object.is(ytuner.url(), 'https://www.ytuner.com/dashboard/credits/work/finish'))
 {
-    if (await ytuner.url().then(_ => _.includes('extra')))
+    if (ytuner.url().includes('extra'))
     {
         await ytuner.goBack()
 	await ytuner.click('a[href^="work"]')
