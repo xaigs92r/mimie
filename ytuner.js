@@ -19,7 +19,7 @@ while (!globalThis.Object.is(ytuner.url(), 'https://www.ytuner.com/dashboard/cre
     {
         await ytuner.goBack()
 	await ytuner.click('a[href^="work"]')
-        break
+        continue
     }
     let id = null
     try
