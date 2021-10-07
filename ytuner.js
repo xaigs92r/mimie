@@ -71,7 +71,7 @@ while (!globalThis.Object.is(ytuner.url(), 'https://www.ytuner.com/dashboard/cre
     console.log(option[0])
     await select.selectOption(option[0])
     await ytuner.waitForSelector('input#form-agree').then(_ => _.evaluateHandle(_ => _.click()))
-    await youtube.waitForTimeout(1000 * globalThis.Math.min(duration, 300))
+    await youtube.waitForTimeout(1000 * duration)
     await youtube.close()
     await ytuner.click('a#submit')
     await ytuner.waitForNavigation()
