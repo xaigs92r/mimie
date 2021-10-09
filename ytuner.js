@@ -15,9 +15,9 @@ await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 await ytuner.click('a[href^="work"]')
 while (!globalThis.Object.is(ytuner.url(), 'https://www.ytuner.com/dashboard/credits/work/finish'))
 {
-    if (ytuner.url().includes('extra'))
+    if (ytuner.url().includes('reload'))
     {
-        await ytuner.goBack()
+        await ytuner.goto('https://www.ytuner.com/dashboard/credits/work')
 	await ytuner.click('a[href^="work"]')
         continue
     }
