@@ -3,7 +3,7 @@ import os from 'os'
 import process from 'process'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
-globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 5.6)
+globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 5.5)
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
 const client = await context.newCDPSession(alexamaster)
