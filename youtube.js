@@ -3,7 +3,7 @@ import process from 'process'
 
 const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false, recordVideo:{dir:'videos'}})
 const alexamaster = await context.newPage()
-for (const _ of ['ytpals', 'sonuker', 'subpals'])
+for (const _ of ['sonuker', 'subpals']) //ytpals
 {     
     await alexamaster.goto(`https://www.${_}.com/login/final/UCkKr6PX7hPxw0E7vYXeDbvg/`)
     await alexamaster.fill('input[name="password"]', process.argv.at(2))
