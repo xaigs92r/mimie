@@ -3,6 +3,7 @@ import process from 'process'
 import {promises as fs} from 'fs'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
+globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 5.5)
 const context = await browser.newContext({recordVideo:{dir:'videos'}})
 const ytuner = await context.newPage()
 await ytuner.goto('https://www.ytuner.com/user/login')
@@ -76,4 +77,3 @@ while (!globalThis.Object.is(ytuner.url(), 'https://www.ytuner.com/dashboard/cre
     await ytuner.click('a#submit')
     await ytuner.waitForNavigation()
 }
-await browser.close()
