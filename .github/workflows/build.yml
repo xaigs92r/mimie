@@ -109,8 +109,9 @@ jobs:
               DEBUG: pw:api
           run: |
               npm install playwright-chromium
+              npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               xvfb-run node colab.js
         - uses: actions/upload-artifact@main
           with:
-              path: screenshot.png
+              path: videos
