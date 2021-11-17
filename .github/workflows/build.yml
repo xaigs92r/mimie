@@ -118,6 +118,7 @@ jobs:
               path: videos
     cron:
         runs-on: ubuntu-latest
+        if: github.event_name == 'push'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
