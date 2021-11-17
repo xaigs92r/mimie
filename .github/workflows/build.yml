@@ -124,4 +124,5 @@ jobs:
               node-version: 17.x
         - run: |
               echo '${{secrets.GCLOUD}}' > gcloud
-              cat gcloud
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              node cron.js
