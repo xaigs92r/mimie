@@ -5,6 +5,7 @@ on:
     - cron: '0 6,18 * * *'
     - cron: '0 */2 * * *'
     - cron: '0 1 * * *'
+    repository_dispatch:
     
 jobs:
     mime:
@@ -98,7 +99,7 @@ jobs:
               path: videos
     colab:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */2 * * *'
+        if: github.event_name == 'repository_dispatch'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
