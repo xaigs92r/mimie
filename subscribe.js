@@ -3,7 +3,7 @@ import process from 'process'
 
 const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false, recordVideo:{dir:'videos'}})
 const subscribe = await context.newPage()
-for (const _ of [/*'sonuker',*/ 'subpals', 'ytpals'])
+for (const _ of ['sonuker', 'subpals', 'ytpals'])
 {     
     await subscribe.goto(`https://www.${_}.com/login/final/UCkKr6PX7hPxw0E7vYXeDbvg/`)
     await subscribe.fill('input[name="password"]', process.argv.at(2))
