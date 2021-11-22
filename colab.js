@@ -6,5 +6,6 @@ await colab.goto('https://colab.research.google.com/github/chaowenGUOorg/pal/blo
 await colab.waitForTimeout(10 * 1000)
 await colab.keyboard.press('Control+F9')
 await colab.click('#ok')
+await colab.click('div[data-email]')
 await colab.waitForTimeout(10 * 1000)
 await context.close()
