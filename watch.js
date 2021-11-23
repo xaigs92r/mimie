@@ -1,7 +1,6 @@
 import {chromium} from 'playwright-chromium'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
-globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 1.7)
 const youtube = await browser.newPage({recordVideo:{dir:'videos'}})
 await youtube.goto('https://www.youtube.com/watch?v=epHjCti0dIs')
 const moviePlayer = await youtube.$('div#movie_player')
