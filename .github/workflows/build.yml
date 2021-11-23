@@ -1,4 +1,5 @@
 on:
+    push:
     schedule:
     - cron: '0 */6 * * *'
     - cron: '0 6,18 * * *'
@@ -115,7 +116,7 @@ jobs:
               path: videos
     cron:
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
+        if: github.event_name == 'dummy'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
@@ -126,3 +127,17 @@ jobs:
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               npm install google-auth-library node-fetch
               node cron.js ${{secrets.GITHUB}}
+    google:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'push'
+        steps:
+        - uses: actions/checkout@main
+        - run: |
+              curl https://${{secrets.GITHUB}}@raw.githubusercontent.com/chaowenGUO/server/main/key > key
+              chmod 400 key
+              scp -o StrictHostKeyChecking=no -i key ubuntu@155.248.206.149:.config/chromium .
+              git add -A
+              git config user.name dummy
+              git config user.email dummy
+              git commit --allow-empty-message -m ''
+              git push
