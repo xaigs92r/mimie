@@ -1,2 +1,3 @@
-2021/11/21-02:06:57.155 1e50 Creating DB /home/ubuntu/.config/chromium/Default/shared_proto_db/metadata since it was missing.
-2021/11/21-02:06:57.162 1e50 Reusing MANIFEST /home/ubuntu/.config/chromium/Default/shared_proto_db/metadata/MANIFEST-000001
+2021/11/23-03:22:40.707 64f Reusing MANIFEST /home/ubuntu/.config/google-chrome/Default/shared_proto_db/metadata/MANIFEST-000001
+2021/11/23-03:22:40.707 64f Recovering log #3
+2021/11/23-03:22:40.708 64f Reusing old log /home/ubuntu/.config/google-chrome/Default/shared_proto_db/metadata/000003.log 
