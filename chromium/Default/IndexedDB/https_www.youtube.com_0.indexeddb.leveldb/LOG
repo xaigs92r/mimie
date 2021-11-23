@@ -1,0 +1,15 @@
+2021/11/23-02:47:43.652 a980d Reusing MANIFEST /home/ubuntu/.config/chromium/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/11/23-02:47:43.652 a980d Recovering log #46
+2021/11/23-02:47:43.652 a980d Reusing old log /home/ubuntu/.config/chromium/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000046.log 
+2021/11/23-02:48:16.611 a980d Level-0 table #51: started
+2021/11/23-02:48:16.615 a980d Level-0 table #51: 3448 bytes OK
+2021/11/23-02:48:16.617 a980d Delete type=0 #46
+2021/11/23-02:48:16.617 a980d Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2021/11/23-02:48:16.617 a980d Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x05\x01\x1f\x04\x02\x03\x00\x00\x00\x00\x00\x00\xf0?\x03\x00\xe0\xad\x12\xab\xd4wB\x00\x03\x00\x00\x00\x00\x00@Q@' @ 6440 : 1
+2021/11/23-02:48:16.617 a980d Compacting 1@1 + 1@2 files
+2021/11/23-02:48:16.620 a980d Generated table #52@1: 398 keys, 26459 bytes
+2021/11/23-02:48:16.620 a980d Compacted 1@1 + 1@2 files => 26459 bytes
+2021/11/23-02:48:16.621 a980d compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/11/23-02:48:16.622 a980d Delete type=2 #51
+2021/11/23-02:48:16.622 a980d Delete type=2 #48
+2021/11/23-02:48:16.622 a980d Manual compaction at level-1 from '\x00\x05\x01\x1f\x04\x02\x03\x00\x00\x00\x00\x00\x00\xf0?\x03\x00\xe0\xad\x12\xab\xd4wB\x00\x03\x00\x00\x00\x00\x00@Q@' @ 6440 : 1 .. (end); will stop at (end)
