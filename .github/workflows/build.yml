@@ -1,5 +1,4 @@
 on:
-    push:
     schedule:
     - cron: '0 */6 * * *'
     - cron: '0 6,18 * * *'
@@ -129,7 +128,7 @@ jobs:
               node cron.js ${{secrets.GITHUB}}
     google:
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
+        if: github.event_name == 'dummy'
         steps:
         - uses: actions/checkout@main
         - run: |
