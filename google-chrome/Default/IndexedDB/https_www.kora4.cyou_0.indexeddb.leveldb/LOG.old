@@ -1,0 +1,8 @@
+2021/11/22-03:32:57.574 5cde7 Reusing MANIFEST /home/ubuntu/.config/chromium/Default/IndexedDB/https_www.kora4.cyou_0.indexeddb.leveldb/MANIFEST-000001
+2021/11/22-03:32:57.574 5cde7 Recovering log #17
+2021/11/22-03:32:57.574 5cde7 Reusing old log /home/ubuntu/.config/chromium/Default/IndexedDB/https_www.kora4.cyou_0.indexeddb.leveldb/000017.log 
+2021/11/22-03:33:06.934 5c265 Level-0 table #21: started
+2021/11/22-03:33:06.934 5c265 Level-0 table #21: 0 bytes OK
+2021/11/22-03:33:06.938 5c265 Delete type=0 #17
+2021/11/22-03:33:06.939 5c265 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2021/11/22-03:33:06.939 5c265 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

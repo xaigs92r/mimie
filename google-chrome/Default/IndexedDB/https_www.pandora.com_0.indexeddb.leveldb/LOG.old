@@ -1,0 +1,15 @@
+2021/11/22-05:06:24.725 629e2 Reusing MANIFEST /home/ubuntu/.config/chromium/Default/IndexedDB/https_www.pandora.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/11/22-05:06:24.726 629e2 Recovering log #51
+2021/11/22-05:06:24.726 629e2 Reusing old log /home/ubuntu/.config/chromium/Default/IndexedDB/https_www.pandora.com_0.indexeddb.leveldb/000051.log 
+2021/11/22-05:07:00.191 62aec Level-0 table #56: started
+2021/11/22-05:07:00.197 62aec Level-0 table #56: 52059 bytes OK
+2021/11/22-05:07:00.199 62aec Delete type=0 #51
+2021/11/22-05:07:00.199 62aec Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2021/11/22-05:07:00.199 62aec Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x03\x01\x15\x00r\x00e\x00d\x00u\x00x\x00P\x00e\x00r\x00s\x00i\x00s\x00t\x00:\x00e\x00n\x00t\x00i\x00t\x00i\x00e\x00s' @ 8262 : 0
+2021/11/22-05:07:00.199 62aec Compacting 1@1 + 1@2 files
+2021/11/22-05:07:00.205 62aec Generated table #57@1: 72 keys, 8602 bytes
+2021/11/22-05:07:00.205 62aec Compacted 1@1 + 1@2 files => 8602 bytes
+2021/11/22-05:07:00.206 62aec compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/11/22-05:07:00.207 62aec Delete type=2 #53
+2021/11/22-05:07:00.207 62aec Delete type=2 #56
+2021/11/22-05:07:00.207 62aec Manual compaction at level-1 from '\x00\x01\x01\x03\x01\x15\x00r\x00e\x00d\x00u\x00x\x00P\x00e\x00r\x00s\x00i\x00s\x00t\x00:\x00e\x00n\x00t\x00i\x00t\x00i\x00e\x00s' @ 8262 : 0 .. (end); will stop at (end)
