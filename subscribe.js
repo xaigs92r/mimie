@@ -10,7 +10,7 @@ for (const _ of ['sonuker', 'subpals', 'ytpals'])
     await subscribe.click('button[type="submit"]')
     await subscribe.waitForNavigation()
     await subscribe.evaluateHandle(() => globalThis.document.starter.submit())
-    for (const _ of globalThis.Array(5).keys())
+    for (const _ of globalThis.Array(6).keys())
     {
         const [popup] = await globalThis.Promise.all([subscribe.waitForEvent('popup'), subscribe.click('a[onclick^="openWin"]')])
         try
