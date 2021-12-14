@@ -178,6 +178,8 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
+              sudo apt update
+              sudo apt install -y --no-install-recommends tesseract-ocrv
               npm install playwright-chromium node-fetch node-tesseract-ocr
               npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
