@@ -72,7 +72,7 @@ jobs:
               git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:subscribe
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > subscribe/package.json
               npm install --prefix subscribe node-fetch
-              sed -i -e s/'^ENV github$'/'ENV github ${{secrets.GITHUB}}'/g -e s/'^ENV GITHUB_REPOSITORY$'/'ENV GITHUB_REPOSITORY ${{env.GITHUB_REPOSITORY}}'/g cron/Dockerfile
+              sed -i -e s/'^ENV github$'/'ENV github ${{secrets.GITHUB}}'/g -e s/'^ENV GITHUB_REPOSITORY$'/'ENV GITHUB_REPOSITORY agewa'/g cron/Dockerfile
               cp cron/Dockerfile cron/server.js subscribe
               cd subscribe
               git add -A
