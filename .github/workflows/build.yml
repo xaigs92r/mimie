@@ -37,7 +37,7 @@ jobs:
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/clean.py | python - ${{secrets.GITHUB_TOKEN}} 
     subscribe:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 6,18 * * *'
+        if: github.event.action == 'subscribe'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
@@ -69,12 +69,13 @@ jobs:
         - run: |
               curl https://${{secrets.GITHUB}}@raw.githubusercontent.com/chaowenGUO/server/main/key > key
               chmod 400 key
-              git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:youtube
-              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > youtube/package.json
+              git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:subscribe
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > subscribe/package.json
               npm install --prefix youtube node-fetch
-              sed -i s/'^ENV haha$'/'ENV haha saewaeg'/g cron/Dockerfile
-              cp cron/Dockerfile cron/server.js youtube
-              cd youtube
+              sed -i s/'^ENV github$'/'ENV github ${{secrets.GITHUB}}'/g cron/Dockerfile
+              sed -i s/'^ENV GITHUB_REPOSITORY$'/"ENV GITHUB_REPOSITORY $GITHUB_REPOSITORY"/g cron/Dockerfile
+              cp cron/Dockerfile cron/server.js subscribe
+              cd subscribe
               git add -A
               git config user.email dummy
               git config user.name dummy
@@ -123,7 +124,7 @@ jobs:
               path: videos
     colab:
         runs-on: ubuntu-latest
-        if: github.event_name == 'repository_dispatch'
+        if: github.event.action == 'colab'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
