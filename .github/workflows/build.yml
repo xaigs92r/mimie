@@ -72,7 +72,7 @@ jobs:
               git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:youtube
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > youtube/package.json
               sed -i s/'^ENV haha$'/'ENV haha saewaeg'/g cron/Dockerfile
-              cp cron/Dockerfile youtube
+              cp cron/Dockerfile cron/server.js youtube
               cd youtube
               git add -A
               git config user.email dummy
