@@ -1,7 +1,8 @@
 FROM scratch
 COPY server.js package.json /usr/local/src/
 COPY node_modules /usr/local/src/node_modules/
-ENV haha
+ENV github
+ENV GITHUB_REPOSITORY
 WORKDIR /usr/local/src
 COPY --from=node:slim /usr/local/bin/node /usr/bin/
 COPY --from=node:slim /lib/x86_64-linux-gnu /lib/x86_64-linux-gnu/
