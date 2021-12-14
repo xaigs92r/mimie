@@ -178,10 +178,12 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
-              npm install playwright-chromium
+              npm install playwright-chromium node-fetch
               npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               xvfb-run node ptc.js ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
-              path: videos
+              path: |
+                  videos
+                  haha.png
