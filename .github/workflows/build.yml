@@ -73,7 +73,7 @@ jobs:
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > subscribe/package.json
               npm install --prefix subscribe node-fetch
               #sed -i s/'^ENV github$'/'ENV github ${{secrets.GITHUB}}'/g cron/Dockerfile
-              sed -i s/'^ENV GITHUB_REPOSITORY$'/"ENV GITHUB_REPOSITORY $GITHUB_REPOSITORY"/g cron/Dockerfile
+              sed -i s/'^ENV GITHUB_REPOSITORY$'/"ENV GITHUB_REPOSITORY"/g cron/Dockerfile
               cp cron/Dockerfile cron/server.js subscribe
               cd subscribe
               git add -A
