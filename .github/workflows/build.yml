@@ -178,6 +178,7 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
               OPENCV4NODEJS_DISABLE_AUTOBUILD: 1
+              OPENCV_LIB_DIR: /usr/lib/x86_64-linux-gnu
           run: |
               sudo apt update
               sudo apt install -y --no-install-recommends tesseract-ocr libopencv-dev python3-opencv
