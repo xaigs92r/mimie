@@ -182,7 +182,7 @@ jobs:
               sudo apt install -y --no-install-recommends tesseract-ocr
               npm install playwright-chromium node-fetch node-tesseract-ocr
               mkdir -p /home/runner/work/mime/mime/node_modules/opencv-build/opencv/build/lib
-              npm install opencv4nodejs
+              sudo npm install opencv4nodejs
               npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               xvfb-run node ptc.js ${{secrets.PASSWORD}}
