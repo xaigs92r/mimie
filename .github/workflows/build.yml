@@ -179,8 +179,9 @@ jobs:
               DEBUG: pw:api
           run: |
               sudo apt update
-              sudo apt install -y --no-install-recommends tesseract-ocr libopencv-dev python3-opencv
+              sudo apt install -y --no-install-recommends tesseract-ocr
               npm install playwright-chromium node-fetch node-tesseract-ocr node-gyp opencv4nodejs
+              ls -al /home/runner/.npm/_logs/
               npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               xvfb-run node ptc.js ${{secrets.PASSWORD}}
