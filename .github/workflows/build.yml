@@ -180,7 +180,7 @@ jobs:
               OPENCV4NODEJS_DISABLE_AUTOBUILD: 1
           run: |
               sudo apt update
-              sudo apt install -y --no-install-recommends tesseract-ocr
+              sudo apt install -y --no-install-recommends tesseract-ocr libopencv-dev python3-opencv
               npm install playwright-chromium node-fetch node-tesseract-ocr opencv4nodejs
               npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
