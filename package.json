@@ -1,8 +1,0 @@
-{
-  "private": true,
-  "type": "module",
-  "opencv4nodejs": {
-    "disableAutoBuild": 1,
-    "opencvLibDir": "/usr/lib/x86_64-linux-gnu"
-  }
-}
