@@ -4,6 +4,7 @@ import fetch from 'node-fetch'
 import {promises as fs} from 'fs'
 import {Buffer} from 'buffer'
 import tesseract from 'node-tesseract-ocr'
+import cv from 'opencv4nodejs'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
 const starClicks = await browser.newPage({recordVideo:{dir:'videos'}})
