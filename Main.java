@@ -7,7 +7,7 @@ public class Main
         {
             try (final var browser = playwright.chromium().launch(new com.microsoft.playwright.BrowserType.LaunchOptions().setChannel("chrome").setArgs(java.util.List.of("--disable-blink-features=AutomationControlled")).setHeadless(false)))
             {
-                final var context = browser.newContext();
+                final var context = browser.newContext(new com.microsoft.playwright.Browser.NewContextOptions().setRecordVideoDir(java.nio.file.Paths.get("videos")));
                 final var page = context.newPage();
                 page.navigate("https://bot.sannysoft.com");
                 page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")));
