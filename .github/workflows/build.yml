@@ -182,7 +182,7 @@ jobs:
               sudo apt update
               sudo apt install -y --no-install-recommends libopencv-dev
               gradle --warning-mode all copyDependencies
-              ldd -d /usr/lib/jni/libopencv-4.2.so
+              ldd -d /usr/lib/jni//usr/lib/jni/libopencv_java420.so
               java -cp /usr/share/java/*:copyDependencies/*:. Main.java
         - uses: actions/upload-artifact@main
           with:
