@@ -179,6 +179,8 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
+              sudo apt update
+              sudo apt install -y --no-install-recommends libopencv-dev
               java Main.java
         - uses: actions/upload-artifact@main
           with:
