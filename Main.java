@@ -8,7 +8,7 @@ public class Main
             final var context = browser.newContext();
             final var page = context.newPage();
             page.navigate("http://whatsmyuseragent.org/");
-            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot-" + browserType.name() + ".png")));
+            page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(Paths.get("haha.png")));
         }
         final var mat = org.opencv.core.Mat.eye( 3, 3, org.opencv.core.CvType.CV_8UC1 );
         java.lang.System.out.println(mat.dump());
