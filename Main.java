@@ -9,7 +9,7 @@ public class Main
             {
                 final var context = browser.newContext();
                 final var page = context.newPage();
-                page.navigate("http://whatsmyuseragent.org/");
+                page.navigate("https://bot.sannysoft.com");
                 page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")));
             }
         }
