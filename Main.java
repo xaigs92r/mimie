@@ -5,8 +5,8 @@ import org.opencv.core.Scalar;
 
 class Main
 {
-  static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
   public static void main(String[] args) {
+    System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     System.out.println("Welcome to OpenCV " + Core.VERSION);
     Mat m = new Mat(5, 10, CvType.CV_8UC1, new Scalar(0));
     System.out.println("OpenCV Mat: " + m);
