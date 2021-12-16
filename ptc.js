@@ -1,17 +1,19 @@
-import {chromium} from 'playwright-chromium'
-import process from 'process'
-import fetch from 'node-fetch'
-import {promises as fs} from 'fs'
-import {Buffer} from 'buffer'
-import tesseract from 'node-tesseract-ocr'
-import cv from 'opencv4nodejs'
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.CvType;
+import org.opencv.core.Scalar;
 
-const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled'], headless:false})
-const starClicks = await browser.newPage({recordVideo:{dir:'videos'}})
-await starClicks.goto('https://www.star-clicks.com/login')
-await starClicks.fill('input#Email', 'chaowen.guo1@gmail.com')
-await starClicks.fill('input#Password', process.argv.at(2))
-await fs.writeFile('haha.jpg', Buffer.from(await fetch('https://www.star-clicks.com/' + await starClicks.locator('img#Captcha2_CaptchaImage').getAttribute('src')).then(_ => _.arrayBuffer())), 'binary')
-console.log(await tesseract.recognize('haha.jpg'))
-await starClicks.waitForTimeout(1000 * 60)
-await browser.close()
+class SimpleSample
+{
+  static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
+  public static void main(String[] args) {
+    System.out.println("Welcome to OpenCV " + Core.VERSION);
+    Mat m = new Mat(5, 10, CvType.CV_8UC1, new Scalar(0));
+    System.out.println("OpenCV Mat: " + m);
+    Mat mr1 = m.row(1);
+    mr1.setTo(new Scalar(1));
+    Mat mc5 = m.col(5);
+    mc5.setTo(new Scalar(5));
+    System.out.println("OpenCV Mat data:\n" + m.dump());
+  }
+}
