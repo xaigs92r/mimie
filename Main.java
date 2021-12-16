@@ -10,7 +10,7 @@ public class Main
                 final var context = browser.newContext();
                 final var page = context.newPage();
                 page.navigate("http://whatsmyuseragent.org/");
-                page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.png")));
+                page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")));
             }
         }
         final var mat = org.opencv.core.Mat.eye( 3, 3, org.opencv.core.CvType.CV_8UC1 );
