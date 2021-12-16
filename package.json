@@ -1,6 +1,10 @@
-"opencv4nodejs": {
+{
+  "private": true,
+  "type": "module",
+  "opencv4nodejs": {
     "disableAutoBuild": 1,
-    "opencvIncludeDir": "/usr/local/opencv-install/include",
-    "opencvLibDir": "/usr/local/opencv-install/include/lib",
-    "opencvBinDir": "/usr/local/opencv-install/include/bin"
+    "opencvIncludeDir": "/usr/include/opencv",
+    "opencvLibDir": "/usr/lib/x86_64-linux-gnu",
+    "opencvBinDir": "/usr/bin"
   }
+}
