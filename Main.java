@@ -5,7 +5,7 @@ public class Main
         java.lang.System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
         try (final var playwright = com.microsoft.playwright.Playwright.create())
         {
-            try (final var browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setArgs(java.util.List.of("--disable-blink-features=AutomationControlled")).setHeadless(false)))
+            try (final var browser = playwright.chromium().launch(new com.microsoft.playwright.BrowserType.LaunchOptions().setChannel("chrome").setArgs(java.util.List.of("--disable-blink-features=AutomationControlled")).setHeadless(false)))
             {
                 final var context = browser.newContext();
                 final var page = context.newPage();
