@@ -171,22 +171,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@main
-        - uses: actions/setup-node@main
+        - uses: actions/setup-java@main
           with:
-              node-version: 17.x
+              java-version: 17.x
+              distribution: zulu
         - env:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
-              OPENCV4NODEJS_DISABLE_AUTOBUILD: 1
-              OPENCV_LIB_DIR: /usr/lib/x86_64-linux-gnu
           run: |
-              sudo apt update
-              sudo apt install -y --no-install-recommends tesseract-ocr libopencv-dev
-              npm install playwright-chromium node-fetch node-tesseract-ocr opencv4nodejs
-              ls -al /home/runner/work/mime/mime/node_modules/opencv4nodejs/build
-              npx playwright install ffmpeg
-              #curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
-              xvfb-run node ptc.js ${{secrets.PASSWORD}}
+              java Main.java
         - uses: actions/upload-artifact@main
           with:
               path: |
