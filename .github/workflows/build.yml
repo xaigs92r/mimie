@@ -181,7 +181,191 @@ jobs:
           run: |
               sudo apt update
               sudo apt install -y --no-install-recommends libopencv-dev
-              java Main.java
+              java on:
+    push:
+    schedule:
+    - cron: '0 */6 * * *'
+    repository_dispatch:
+    
+jobs:
+    mime:
+        runs-on: ubuntu-latest
+        if: github.event.schedule == '0 */6 * * *'
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 17.x
+        - env:
+              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+              DEBUG: pw:api
+          run: |
+              npm install playwright-chromium
+              npx playwright install ffmpeg
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              xvfb-run node mime.js ${{secrets.PASSWORD}}
+        - uses: actions/upload-artifact@main
+          with:
+              path: videos
+    clean:
+        runs-on: ubuntu-latest
+        if: github.event.schedule == '0 */6 * * *'
+        steps:
+        - uses: actions/setup-python@main
+          with:
+              python-version: 3.x
+        - run: |
+              pip install aiohttp
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/clean.py | python - ${{secrets.GITHUB_TOKEN}} 
+    subscribe:
+        runs-on: ubuntu-latest
+        if: github.event.action == 'subscribe'
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 17.x
+        - env:
+              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+              DEBUG: pw:api
+          run: |
+              npm install playwright-chromium
+              npx playwright install ffmpeg
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              xvfb-run node subscribe.js ${{secrets.PASSWORD}}
+        - uses: actions/upload-artifact@main
+          with:
+              path: videos
+    subscribeCron:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'dummy'
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 17.x
+        - run: curl https://${GITHUB_REPOSITORY%/*}.github.io/common/version.js | node --input-type=module
+        - uses: actions/setup-node@main
+          with:
+              node-version: ${{env.JS}}
+        - run: |
+              curl https://${{secrets.GITHUB}}@raw.githubusercontent.com/chaowenGUO/server/main/key > key
+              chmod 400 key
+              git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:subscribe
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > subscribe/package.json
+              npm install --prefix subscribe node-fetch
+              sed -i -e 's/^ENV github$/ENV github ${{secrets.GITHUB}}/g' -e "s|^ENV GITHUB_REPOSITORY$|ENV GITHUB_REPOSITORY $GITHUB_REPOSITORY|g" cron/Dockerfile
+              cp cron/Dockerfile cron/server.js subscribe
+              cd subscribe
+              git add -A
+              git config user.email dummy
+              git config user.name dummy
+              git commit --allow-empty-message -m ''
+              git -c core.sshCommand='ssh -i ../key' push
+    ytuner:
+        runs-on: ubuntu-latest
+        if: github.event.schedule == '0 */6 * * *'
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 17.x
+        - env:
+              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+              DEBUG: pw:api
+          run: |
+              npm install playwright-chromium
+              npx playwright install ffmpeg
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              xvfb-run node ytuner.js ${{secrets.PASSWORD}}
+        - uses: actions/upload-artifact@main
+          with:
+              path: |
+                  videos
+                  screenshot.png
+                  last.html
+    watch:
+        runs-on: ubuntu-latest
+        if: github.event.schedule == '0 */6 * * *'
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 17.x
+        - env:
+              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+              DEBUG: pw:api
+          run: |
+              npm install playwright-chromium
+              npx playwright install ffmpeg
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              xvfb-run node watch.js
+        - uses: actions/upload-artifact@main
+          with:
+              path: videos
+    colab:
+        runs-on: ubuntu-latest
+        if: github.event.action == 'colab'
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 17.x
+        - env:
+              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+              DEBUG: pw:api
+          run: |
+              npm install playwright-chromium
+              npx playwright install ffmpeg
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              xvfb-run node colab.js
+        - uses: actions/upload-artifact@main
+          with:
+              path: videos
+    colabCron:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'dummy'
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 17.x
+        - run: |
+              echo '${{secrets.GCLOUD}}' > gcloud
+              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
+              npm install google-auth-library node-fetch
+              node cron.js ${{secrets.GITHUB}}
+    google:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'dummy'
+        steps:
+        - uses: actions/checkout@main
+        - run: |
+              curl https://${{secrets.GITHUB}}@raw.githubusercontent.com/chaowenGUO/server/main/key > key
+              chmod 400 key
+              rm -rf google-chrome
+              scp -o StrictHostKeyChecking=no -i key -r ubuntu@104.42.147.222:.config/google-chrome .
+              git add -A
+              git config user.name dummy
+              git config user.email dummy
+              git commit --allow-empty-message -m ''
+              git push
+    ptc:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-java@main
+          with:
+              java-version: 17.x
+              distribution: zulu
+        - env:
+              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+              DEBUG: pw:api
+          run: |
+              sudo apt update
+              sudo apt install -y --no-install-recommends libopencv-dev
+              gradle --warning-mode all copyDependencies
+              java -cp /usr/share/java/*:copyDependencies/*:. Main.java
         - uses: actions/upload-artifact@main
           with:
               path: |
