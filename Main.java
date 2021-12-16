@@ -5,9 +5,9 @@ import org.opencv.core.Scalar;
 
 public class Main
 {
-  static {System.load("/usr/lib/jni/lib" + Core.NATIVE_LIBRARY_NAME + ".so");}
-  public static void main(String[] args) throws Exception {
-    System.out.println("Welcome to OpenCV " + Core.VERSION);
+  public static void main(String[] args)
+  {
+    System.load(Core.NATIVE_LIBRARY_NAME);
     Mat mat = new Mat();
     System.out.println( "mat = " + mat.dump() );
   }
