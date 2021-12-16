@@ -181,9 +181,8 @@ jobs:
           run: |
               sudo apt update
               sudo apt install -y libopencv-dev
-              gradle --warning-mode all copyDependencies
-              javac -cp /usr/share/java/*:copyDependencies/*:. Main.java
-              java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/*:copyDependencies/*:. Main
+              #gradle --warning-mode all copyDependencies
+              java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/*::. Main.java
         - uses: actions/upload-artifact@main
           with:
               path: |
