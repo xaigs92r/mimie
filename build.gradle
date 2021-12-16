@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.microsoft.playwright:playwright:latest.release'
+}
+
+task copyDependencies(type: Copy) {
+    from configurations.default into 'copyDependencies'
+}
