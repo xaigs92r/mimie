@@ -3,7 +3,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.CvType;
 import org.opencv.core.Scalar;
 
-class SimpleSample
+class Main
 {
   static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
   public static void main(String[] args) {
