@@ -173,7 +173,7 @@ jobs:
         - uses: actions/checkout@main
         - uses: actions/setup-java@main
           with:
-              java-version: 11.x
+              java-version: 17.x
               distribution: zulu
         - run: |
               sudo apt update
