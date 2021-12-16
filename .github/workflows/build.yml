@@ -174,15 +174,12 @@ jobs:
         - uses: actions/setup-java@main
           with:
               java-version: 11.x
-              distribution: temurin
-        - env:
-              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-              DEBUG: pw:api
-          run: |
+              distribution: zulu
+        - run: |
               sudo apt update
               sudo apt install -y libopencv-dev
               #gradle --warning-mode all copyDependencies
-              javac -cp /usr/share/java/opencv.jar:. Main.java
+              javac -cp /usr/share/java/opencv.jar Main.java
               java -cp /usr/share/java/opencv.jar:. Main
         - uses: actions/upload-artifact@main
           with:
