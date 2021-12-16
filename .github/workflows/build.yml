@@ -180,7 +180,7 @@ jobs:
               sudo apt install -y libopencv-dev
               #gradle --warning-mode all copyDependencies
               javac -cp /usr/share/java/opencv.jar:. Main.java || true
-              java -cp /usr/share/java/opencv.jar:. Main
+              java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/opencv.jar:. Main
         - uses: actions/upload-artifact@main
           with:
               path: |
