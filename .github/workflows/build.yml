@@ -173,7 +173,7 @@ jobs:
         - uses: actions/checkout@main
         - uses: actions/setup-java@main
           with:
-              java-version: 1.8
+              java-version: 8.x
               distribution: zulu
         - env:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
