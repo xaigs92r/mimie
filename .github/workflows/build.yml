@@ -180,9 +180,8 @@ jobs:
               DEBUG: pw:api
           run: |
               sudo apt update
-              sudo apt install -y --no-install-recommends libopencv-dev
+              sudo apt install -y libopencv-dev
               gradle --warning-mode all copyDependencies
-              ldd -d /usr/lib/jni/libopencv_java420.so
               java -cp /usr/share/java/*:copyDependencies/*:. Main.java
         - uses: actions/upload-artifact@main
           with:
