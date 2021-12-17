@@ -10,6 +10,7 @@ public class Main
                 final var context = browser.newContext(new com.microsoft.playwright.Browser.NewContextOptions().setRecordVideoDir(java.nio.file.Paths.get("videos")));
                 final var page = context.newPage();
                 page.navigate("https://www.star-clicks.com/login");
+                java.util.concurrent.TimeUnit.SECONDS.sleep(15);
                 page.fill("input#Email", "chaowen.guo1@gmail.com");
                 //page.fill("input#Password", args[0]);
                 final var mat = org.opencv.imgcodecs.Imgcodecs.imdecode(new org.opencv.core.MatOfByte(java.net.http.HttpClient.newBuilder().build().sendAsync(java.net.http.HttpRequest.newBuilder(java.net.URI.create("https://www.star-clicks.com/" + page.locator("img#Captcha2_CaptchaImage").getAttribute("src"))).build(), java.net.http.HttpResponse.BodyHandlers.ofByteArray()).thenApply(java.net.http.HttpResponse::body).join()), org.opencv.imgcodecs.Imgcodecs.IMREAD_GRAYSCALE);
