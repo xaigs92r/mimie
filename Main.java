@@ -21,7 +21,7 @@ public class Main
                 org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, matOfByte);
                 final var result = tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray())));
                 java.lang.System.out.println(result);
-                java.util.concurrent.TimeUnit.SECONDS.sleep(60);
+                java.util.concurrent.TimeUnit.SECONDS.sleep(30);
             }
         }
     }
