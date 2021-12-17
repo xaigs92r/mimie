@@ -180,7 +180,7 @@ jobs:
               DEBUG: pw:api
           run: |
               sudo apt update
-              sudo apt install -y --no-install-recommends libopencv-dev
+              sudo apt install -y --no-install-recommends libopencv-dev tesseract-ocr
               gradle --warning-mode all copyDependencies
               java -cp copyDependencies/`ls copyDependencies/playwright-*.jar`:copyDependencies/* com.microsoft.playwright.CLI install ffmpeg
               javac -cp /usr/share/java/opencv.jar:copyDependencies/* Main.java || true
