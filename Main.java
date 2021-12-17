@@ -21,6 +21,7 @@ public class Main
                 org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, matOfByte);
                 page.fill("input#Captcha2_CaptchaTextBox", tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray()))));
                 page.click("input#Button1_input");
+                page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")).setFullPage(true));
                 java.util.concurrent.TimeUnit.SECONDS.sleep(30);
             }
         }
