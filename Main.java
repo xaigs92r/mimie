@@ -9,7 +9,9 @@ public class Main
             {
                 final var context = browser.newContext();
                 final var page = context.newPage();
-                page.navigate("https://bot.sannysoft.com");
+                page.navigate("https://www.star-clicks.com/login");
+                page.fill("input#Email", "chaowen.guo1@gmail.com");
+                page.fill("input#Password", args[2]);
                 page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")));
             }
         }
