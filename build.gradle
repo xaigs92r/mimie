@@ -8,6 +8,7 @@ repositories {
 
 dependencies {
     implementation 'com.microsoft.playwright:playwright:latest.release'
+    implementation 'net.sourceforge.tess4j:tess4j:latest.release'
 }
 
 task copyDependencies(type: Copy) {
