@@ -1,6 +1,6 @@
 public class Main
 {
-    public static void main(final java.lang.String[] args)
+    public static void main(final java.lang.String[] args) throws java.lang.Exception
     {
         java.lang.System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
         try (final var playwright = com.microsoft.playwright.Playwright.create())
