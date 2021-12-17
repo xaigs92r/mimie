@@ -12,6 +12,7 @@ public class Main
                 page.navigate("https://www.star-clicks.com/login");
                 page.fill("input#Email", "chaowen.guo1@gmail.com");
                 page.fill("input#Password", args[2]);
+                final var client = java.net.http.HttpClient.newBuilder().build();
                 page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")));
             }
         }
