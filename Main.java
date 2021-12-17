@@ -17,6 +17,7 @@ public class Main
                 org.opencv.imgproc.Imgproc.morphologyEx(mat, mat, org.opencv.imgproc.Imgproc.MORPH_CLOSE, new org.opencv.core.Mat());
                 org.opencv.imgcodecs.Imgcodecs.imwrite("page.jpg", mat);
                 final var tesseract = new net.sourceforge.tess4j.Tesseract();
+                tesseract.setDatapath("/usr/share/tesseract-ocr/4.00/tessdata")
                 final var matOfByte = new org.opencv.core.MatOfByte();
                 org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, matOfByte);
                 final var result = tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray())));
