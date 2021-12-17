@@ -15,7 +15,7 @@ public class Main
                 final var mat = org.opencv.imgcodecs.Imgcodecs.imdecode(new org.opencv.core.MatOfByte(java.net.http.HttpClient.newBuilder().build().sendAsync(java.net.http.HttpRequest.newBuilder(java.net.URI.create("https://www.star-clicks.com/" + page.locator("img#Captcha2_CaptchaImage").getAttribute("src"))).build(), java.net.http.HttpResponse.BodyHandlers.ofByteArray()).thenApply(java.net.http.HttpResponse::body).join()), org.opencv.imgcodecs.Imgcodecs.IMREAD_GRAYSCALE);
                 org.opencv.imgproc.Imgproc.threshold(mat, mat, 0, 255, org.opencv.imgproc.Imgproc.THRESH_BINARY + org.opencv.imgproc.Imgproc.THRESH_OTSU);
                 org.opencv.imgcodecs.Imgcodecs.imwrite("page.jpg", mat);
-                page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")));
+                java.util.concurrent.TimeUnit.SECONDS.sleep(60);
             }
         }
     }
