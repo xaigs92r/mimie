@@ -182,11 +182,9 @@ jobs:
               sudo apt update
               sudo apt install -y --no-install-recommends libopencv-dev
               gradle --warning-mode all copyDependencies
-              mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install ffmpeg"
               javac -cp /usr/share/java/opencv.jar:copyDependencies/* Main.java || true
               xvfb-run java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/opencv.jar:copyDependencies/*:. Main
         - uses: actions/upload-artifact@main
           with:
               path: |
-                  videos
                   haha.jpg
