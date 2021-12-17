@@ -11,8 +11,8 @@ public class Main
                 final var page = context.newPage();
                 page.navigate("https://www.star-clicks.com/login");
                 page.fill("input#Email", "chaowen.guo1@gmail.com");
-                page.fill("input#Password", args[0]);
-                java.net.http.HttpClient.newBuilder().build().sendAsync(java.net.http.HttpRequest.newBuilder(java.net.URI.create("https://www.star-clicks.com/" + page.locator("img#Captcha2_CaptchaImage").getAttribute("src")));
+                //page.fill("input#Password", args[0]);
+                //java.net.http.HttpClient.newBuilder().build().sendAsync(java.net.http.HttpRequest.newBuilder(java.net.URI.create("https://www.star-clicks.com/" + page.locator("img#Captcha2_CaptchaImage").getAttribute("src")));
                 page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")));
             }
         }
