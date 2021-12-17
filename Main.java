@@ -7,7 +7,7 @@ public class Main
         {
             try (final var browser = playwright.chromium().launch(new com.microsoft.playwright.BrowserType.LaunchOptions().setChannel("chrome").setArgs(java.util.List.of("--disable-blink-features=AutomationControlled")).setHeadless(false)))
             {
-                final var context = browser.newContext();
+                final var context = browser.newContext(new com.microsoft.playwright.Browser.NewContextOptions().setRecordVideoDir(java.nio.file.Paths.get("videos")));
                 final var page = context.newPage();
                 page.navigate("https://www.star-clicks.com/login");
                 page.fill("input#Email", "chaowen.guo1@gmail.com");
