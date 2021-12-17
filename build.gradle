@@ -14,8 +14,10 @@ task copyDependencies(type: Copy) {
     from configurations.default into 'copyDependencies'
 }
 
-task runPlaywrightCli(type: JavaExec) {
+task playwright(type: JavaExec) {
     mainClass = 'com.microsoft.playwright.CLI'
     classpath sourceSets.main.runtimeClasspath
-    args 'install-deps chromium'
+    if (project.hasProperty('args')) {
+        args project.getProperty('args')
+    }
 }
