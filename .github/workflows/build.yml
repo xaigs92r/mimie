@@ -188,5 +188,5 @@ jobs:
         - uses: actions/upload-artifact@main
           with:
               path: |
-                  haha.jpg
+                  videos
                   page.jpg
