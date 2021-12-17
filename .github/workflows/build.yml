@@ -182,7 +182,7 @@ jobs:
               sudo apt update
               sudo apt install -y --no-install-recommends libopencv-dev
               gradle --warning-mode all copyDependencies
-              gradle --warning-mode all playwright -Pargs='install-deps chromium'
+              gradle --warning-mode all playwright
               javac -cp /usr/share/java/opencv.jar:copyDependencies/* Main.java || true
               xvfb-run java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/opencv.jar:copyDependencies/*:. Main ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
