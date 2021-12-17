@@ -17,5 +17,5 @@ task copyDependencies(type: Copy) {
 task playwright(type: JavaExec) {
     mainClass = 'com.microsoft.playwright.CLI'
     classpath sourceSets.main.runtimeClasspath
-    args 'install-deps chromium'
+    args 'install ffmpeg'
 }
