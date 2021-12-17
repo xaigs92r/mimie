@@ -184,7 +184,7 @@ jobs:
               gradle --warning-mode all copyDependencies
               #gradle --warning-mode all playwright
               ls -al copyDependencies
-              java -cp copyDependencies/* com.microsoft.playwright.CLI 'install ffmpeg'
+              java -cp copyDependencies/playwright-1.17.2.jar:copyDependencies/* com.microsoft.playwright.CLI install ffmpeg
               #mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install ffmpeg"
               javac -cp /usr/share/java/opencv.jar:copyDependencies/* Main.java || true
               xvfb-run java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/opencv.jar:copyDependencies/*:. Main ${{secrets.PASSWORD}}
