@@ -188,3 +188,4 @@ jobs:
           with:
               path: |
                   haha.jpg
+                  page.jpg
