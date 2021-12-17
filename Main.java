@@ -11,11 +11,16 @@ public class Main
                 final var page = context.newPage();
                 page.navigate("https://www.star-clicks.com/login");
                 page.fill("input#Email", "chaowen.guo1@gmail.com");
-                //page.fill("input#Password", args[0]);
+                page.fill("input#Password", args[0]);
                 final var mat = org.opencv.imgcodecs.Imgcodecs.imdecode(new org.opencv.core.MatOfByte(java.net.http.HttpClient.newBuilder().build().sendAsync(java.net.http.HttpRequest.newBuilder(java.net.URI.create("https://www.star-clicks.com/" + page.locator("img#Captcha2_CaptchaImage").getAttribute("src"))).build(), java.net.http.HttpResponse.BodyHandlers.ofByteArray()).thenApply(java.net.http.HttpResponse::body).join()), org.opencv.imgcodecs.Imgcodecs.IMREAD_GRAYSCALE);
                 org.opencv.imgproc.Imgproc.threshold(mat, mat, 0, 255, org.opencv.imgproc.Imgproc.THRESH_BINARY + org.opencv.imgproc.Imgproc.THRESH_OTSU);
                 org.opencv.imgproc.Imgproc.morphologyEx(mat, mat, org.opencv.imgproc.Imgproc.MORPH_CLOSE, new org.opencv.core.Mat());
                 org.opencv.imgcodecs.Imgcodecs.imwrite("page.jpg", mat);
+                final var tesseract = new net.sourceforge.tess4j.Tesseract();
+                final var matOfByte = new org.opencv.core.MatOfByte();
+                org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, matOfByte);
+                final var result = tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray()));
+                java.lang.System.out.println(result);
                 java.util.concurrent.TimeUnit.SECONDS.sleep(60);
             }
         }
