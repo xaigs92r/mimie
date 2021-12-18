@@ -23,7 +23,7 @@ public class Main
                 org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, matOfByte);
                 page.fill("input#Captcha2_CaptchaTextBox", tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray()))));
                 page.click("input#Button1_input");
-                page.navigate("https://www.star-clicks.com/portal/ads");
+                //page.navigate("https://www.star-clicks.com/portal/ads");
                 java.util.concurrent.TimeUnit.SECONDS.sleep(30);
                 page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")).setFullPage(true));
             }
