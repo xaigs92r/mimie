@@ -7,8 +7,7 @@ for (const _ of ['sonuker', 'subpals', 'ytpals'])
 {     
     await subscribe.goto(`https://www.${_}.com/login/final/UCkKr6PX7hPxw0E7vYXeDbvg/`)
     await subscribe.fill('input[name="password"]', process.argv.at(2))
-    await subscribe.click('button[type="submit"]')
-    await subscribe.waitForNavigation()
+    await globalThis.Promise.all([subscribe.waitForNavigation(), subscribe.click('button[type="submit"]')])
     await subscribe.evaluateHandle(() => globalThis.document.starter.submit())
     for (const _ of globalThis.Array(6).keys())
     {
@@ -20,8 +19,7 @@ for (const _ of ['sonuker', 'subpals', 'ytpals'])
         catch {}
         await subscribe.waitForTimeout(1000 * 40)
         await popup.close()
-        await subscribe.click('a[onclick^="confirmAll"]')
-        await subscribe.waitForNavigation()
+        await globalThis.Promise.all([subscribe.waitForNavigation(), subscribe.click('a[onclick^="confirmAll"]')])
     }
 }
 await context.close()
