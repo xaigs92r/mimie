@@ -168,7 +168,7 @@ jobs:
               git push
     ptc:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */6 * * *'
+        #if: github.event.schedule == '0 */6 * * *'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-java@main
