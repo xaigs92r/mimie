@@ -15,13 +15,6 @@ public class Main
                 email.fill("chaowen.guo1@gmail.com");
                 page.fill("input#Password", args[0]);
                 final var mat = org.opencv.imgcodecs.Imgcodecs.imdecode(new org.opencv.core.MatOfByte(java.net.http.HttpClient.newBuilder().build().sendAsync(java.net.http.HttpRequest.newBuilder(java.net.URI.create("https://www.star-clicks.com/" + page.locator("img#Captcha2_CaptchaImage").getAttribute("src"))).build(), java.net.http.HttpResponse.BodyHandlers.ofByteArray()).thenApply(java.net.http.HttpResponse::body).join()), org.opencv.imgcodecs.Imgcodecs.IMREAD_GRAYSCALE);
-                //java.lang.System.out.println(mat.dump());
-                /*final var set = new java.util.HashSet<java.lang.Integer>();
-                for (final var row:mat)
-                {
-                    for (final var $:row) set.add($);
-                }
-                java.lang.System.out.println(set);*/
                 org.opencv.imgproc.Imgproc.threshold(mat, mat, 0, 255, org.opencv.imgproc.Imgproc.THRESH_BINARY + org.opencv.imgproc.Imgproc.THRESH_OTSU);
                 org.opencv.imgproc.Imgproc.morphologyEx(mat, mat, org.opencv.imgproc.Imgproc.MORPH_CLOSE, new org.opencv.core.Mat());
                 //org.opencv.imgcodecs.Imgcodecs.imwrite("page.jpg", mat);
@@ -36,8 +29,9 @@ public class Main
                 for (final var $:(java.lang.Iterable<java.lang.Integer>)java.util.stream.IntStream.range(0, ads.count())::iterator)
                 {
                     final var popup = page.waitForPopup(() -> ads.nth($).click());
-                    java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+                    popup.waitForLoadState();
                     popup.close();
+                    java.util.concurrent.TimeUnit.SECONDS.sleep(2);
                 }
                 java.util.concurrent.TimeUnit.SECONDS.sleep(10);
                 page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")).setFullPage(true));
