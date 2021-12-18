@@ -26,9 +26,9 @@ public class Main
                 page.click("input#Button1_input");
                 page.click("a[href='ads']");
                 final var ads = page.locator("a[rel]");
-                for (final var $:(java.lang.Iterable<java.lang.Integer>)java.util.stream.IntStream.range(0, ads.count())::iterator)
+                while (ads.count() != 0)
                 {
-                    final var popup = page.waitForPopup(() -> ads.nth($).click());
+                    final var popup = page.waitForPopup(() -> ads.click());
                     popup.waitForLoadState();
                     popup.close();
                     java.util.concurrent.TimeUnit.SECONDS.sleep(2);
