@@ -24,6 +24,7 @@ public class Main
                 java.lang.System.out.println(set);*/
                 org.opencv.imgproc.Imgproc.threshold(mat, mat, 0, 255, org.opencv.imgproc.Imgproc.THRESH_BINARY + org.opencv.imgproc.Imgproc.THRESH_OTSU);
                 org.opencv.imgproc.Imgproc.morphologyEx(mat, mat, org.opencv.imgproc.Imgproc.MORPH_CLOSE, new org.opencv.core.Mat());
+                org.opencv.imgcodecs.Imgcodecs.imwrite("page.jpg", mat);
                 final var tesseract = new net.sourceforge.tess4j.Tesseract();
                 tesseract.setDatapath("/usr/share/tesseract-ocr/4.00/tessdata");
                 final var matOfByte = new org.opencv.core.MatOfByte();
