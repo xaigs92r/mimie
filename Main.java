@@ -33,8 +33,8 @@ public class Main
                 page.click("input#Button1_input");
                 page.click("a[href='ads']");
                 final var ads = page.locator("a[rel]");
-                java.lang.System.out.println(ads.count());
-                java.util.concurrent.TimeUnit.SECONDS.sleep(20);
+                for (final var $:(java.lang.Iterable<java.lang.Integer>)java.util.stream.IntStream.range(0, ads.count())::iterator) ads.nth($).click();
+                java.util.concurrent.TimeUnit.SECONDS.sleep(15);
                 page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")).setFullPage(true));
             }
         }
