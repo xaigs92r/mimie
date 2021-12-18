@@ -15,7 +15,7 @@ public class Main
                 email.fill("chaowen.guo1@gmail.com");
                 page.fill("input#Password", args[0]);
                 final var mat = org.opencv.imgcodecs.Imgcodecs.imdecode(new org.opencv.core.MatOfByte(java.net.http.HttpClient.newBuilder().build().sendAsync(java.net.http.HttpRequest.newBuilder(java.net.URI.create("https://www.star-clicks.com/" + page.locator("img#Captcha2_CaptchaImage").getAttribute("src"))).build(), java.net.http.HttpResponse.BodyHandlers.ofByteArray()).thenApply(java.net.http.HttpResponse::body).join()), org.opencv.imgcodecs.Imgcodecs.IMREAD_GRAYSCALE);
-                java.lang.System.out.println(mat.dump());
+                //java.lang.System.out.println(mat.dump());
                 /*final var set = new java.util.HashSet<java.lang.Integer>();
                 for (final var row:mat)
                 {
