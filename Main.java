@@ -33,11 +33,10 @@ public class Main
                     java.util.concurrent.TimeUnit.SECONDS.sleep(2);
                 }
                 java.util.concurrent.TimeUnit.SECONDS.sleep(10);
-                catch (Exception e)
-                {*/
+               
                     page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")).setFullPage(true));
                     org.opencv.imgcodecs.Imgcodecs.imwrite("page.jpg", mat);
-                //}
+                
             }
         }
     }
