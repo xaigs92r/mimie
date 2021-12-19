@@ -24,8 +24,6 @@ public class Main
                 page.fill("input#Captcha2_CaptchaTextBox", tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray()))).replaceAll("[^\\d]", ""));
                 page.waitForNavigation(() -> page.click("input#Button1_input"));
                 page.waitForNavigation(() -> page.click("a[href='ads']"));
-                /*try
-                {
                 final var ads = page.locator("a[rel]");
                 while (ads.count() != 0)
                 {
@@ -33,9 +31,8 @@ public class Main
                     popup.waitForLoadState();
                     popup.close();
                     java.util.concurrent.TimeUnit.SECONDS.sleep(2);
-                }*/
+                }
                 java.util.concurrent.TimeUnit.SECONDS.sleep(10);
-                /*}
                 catch (Exception e)
                 {*/
                     page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")).setFullPage(true));
