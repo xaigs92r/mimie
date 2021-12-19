@@ -187,7 +187,4 @@ jobs:
               xvfb-run java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/opencv.jar:copyDependencies/*:. Main ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
-              path: |
-                  videos
-                  haha.jpg
-                  page.jpg
+              path: videos
