@@ -23,9 +23,9 @@ public class Main
                 org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, matOfByte);
                 page.fill("input#Captcha2_CaptchaTextBox", tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray()))).replaceAll("[^\\d]", ""));
                 page.waitForNavigation(() -> page.click("input#Button1_input"));
+                page.waitForNavigation(() -> page.click("a[href='ads']"));
                 /*try
                 {
-                page.click("a[href='ads']");
                 final var ads = page.locator("a[rel]");
                 while (ads.count() != 0)
                 {
