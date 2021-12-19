@@ -30,6 +30,7 @@ public class Main
                     final var popup = page.waitForPopup(() -> ads.first().click());
                     popup.waitForLoadState();
                     popup.close();
+                    java.util.concurrent.TimeUnit.SECONDS.sleep(2);
                 }
                 java.util.concurrent.TimeUnit.SECONDS.sleep(10);
                
