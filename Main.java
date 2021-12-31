@@ -19,6 +19,8 @@ public class Main
                 org.opencv.imgproc.Imgproc.morphologyEx(mat, mat, org.opencv.imgproc.Imgproc.MORPH_CLOSE, new org.opencv.core.Mat());
                 final var tesseract = new net.sourceforge.tess4j.Tesseract();
                 tesseract.setDatapath("/usr/share/tesseract-ocr/4.00/tessdata");
+                tesseract.setPageSegMode(7);
+                tesseract.setOcrEngineMode(1);
                 final var matOfByte = new org.opencv.core.MatOfByte();
                 org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, matOfByte);
                 page.fill("input#Captcha2_CaptchaTextBox", tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray()))).replaceAll("[^\\d]", ""));
