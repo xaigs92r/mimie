@@ -180,7 +180,7 @@ jobs:
               DEBUG: pw:api
           run: |
               pip install playwright opencv-python
-              playwright install ffmepg
+              playwright install ffmpeg
               xvfb-run python digit.py ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
