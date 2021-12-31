@@ -1,4 +1,4 @@
-import asyncio, playwright.async_api, cv2, numpy, argparse, tensorflow
+import asyncio, playwright.async_api, cv2, numpy, argparse, tensorflow, operator
 
 parser = argparse.ArgumentParser()
 parser.add_argument('password')
@@ -17,12 +17,14 @@ async def main():
         mat = cv2.threshold(mat, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
         mat = cv2.morphologyEx(mat, cv2.MORPH_OPEN, None)     
         shape = tensorflow.keras.datasets.mnist.load_data()[0][0].shape[1:]
-        for index, _ in enumerate(sorted(cv2.boundingRect(_) for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0], key=lambda _:_[0])):
-            x,y,w,h = _
-            model = tensorflow.keras.Sequential([tensorflow.keras.models.load_model('ocrDigit'), tensorflow.keras.layers.Softmax()])
-            predictions = model.predict(numpy.array([cv2.resize(mat[y:y + h, x:x + w], shape) / 255]))
-            cv2.imwrite(f'{index}.png', cv2.resize(mat[y:y + h, x:x + w], shape))
-            print([numpy.argmax(_) for _ in predictions])
+        print(sorted(cv2.boundingRect(_) for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0], key=operator.itemgetter(0)))
+        
+        #for index, _ in enumerate(sorted(cv2.boundingRect(_) for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0], key=lambda _:_[0])):
+        #    x,y,w,h = _
+        #    model = tensorflow.keras.Sequential([tensorflow.keras.models.load_model('ocrDigit'), tensorflow.keras.layers.Softmax()])
+        #    predictions = model.predict(numpy.array([cv2.resize(mat[y:y + h, x:x + w], shape) / 255]))
+        #    cv2.imwrite(f'{index}.png', cv2.resize(mat[y:y + h, x:x + w], shape))
+        #    print([numpy.argmax(_) for _ in predictions])
         await page.screenshot(path='hahaha.png')
         await browser.close()
 
