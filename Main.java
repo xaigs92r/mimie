@@ -34,8 +34,8 @@ public class Main
                     popup.close();
                     java.util.concurrent.TimeUnit.SECONDS.sleep(2);
                 }
-                page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")).setFullPage(true));
-                org.opencv.imgcodecs.Imgcodecs.imwrite("page.jpg", mat);
+                /*page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("haha.jpg")).setFullPage(true));
+                org.opencv.imgcodecs.Imgcodecs.imwrite("page.jpg", mat);*/
             }
         }
     }
