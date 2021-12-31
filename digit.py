@@ -18,7 +18,7 @@ async def main():
         mat = cv2.morphologyEx(mat, cv2.MORPH_OPEN, None)
         contours = cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]
         x,y,w,h = cv2.boundingRect(contours[0])
-        cv2.imwrite('haha.png', mat[x:x + w, y:y + h])
+        cv2.imwrite('haha.png', mat[y:y + h, x:x + w])
         await page.screenshot(path='hahaha.png')
         #model = tensorflow.keras.Sequential([tensorflow.keras.models.load_model('ocrDigit'), tensorflow.keras.layers.Softmax()])
         #predictions = model.predict(numpy.array([x_test[0]]))
