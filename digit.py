@@ -15,14 +15,15 @@ async def main():
         await page.fill('input#Password', parser.parse_args().password)
         mat = cv2.imdecode(numpy.frombuffer(await page.locator('img#Captcha2_CaptchaImage').screenshot(), numpy.uint8), 0)
         mat = cv2.threshold(mat, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
-        mat = cv2.morphologyEx(mat, cv2.MORPH_OPEN, None)
-        contours = cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]
-        x,y,w,h = cv2.boundingRect(contours[0])
-        cv2.imwrite('haha.png', mat[y:y + h, x:x + w])
+        mat = cv2.morphologyEx(mat, cv2.MORPH_OPEN, None)     
+        shape = tensorflow.keras.datasets.mnist.load_data()[0][0].shape
+        print(shape)
+        for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]:
+            x,y,w,h = cv2.boundingRect(_)
+            model = tensorflow.keras.Sequential([tensorflow.keras.models.load_model('ocrDigit'), tensorflow.keras.layers.Softmax()])
+            predictions = model.predict(numpy.array([cv2.resize(mat[y:y + h, x:x + w], shape)]))
+            print([numpy.argmax(_) for _ in predictions])
         await page.screenshot(path='hahaha.png')
-        #model = tensorflow.keras.Sequential([tensorflow.keras.models.load_model('ocrDigit'), tensorflow.keras.layers.Softmax()])
-        #predictions = model.predict(numpy.array([x_test[0]]))
-        #[numpy.argmax(_) for _ in predictions]
         await browser.close()
 
 asyncio.run(main())
