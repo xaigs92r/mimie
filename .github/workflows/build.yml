@@ -190,4 +190,4 @@ jobs:
           with:
               path: |
                   videos
-                  *.png
+                  *.jpg
