@@ -20,7 +20,7 @@ async def main():
         for index, _ in enumerate(cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]):
             x,y,w,h = cv2.boundingRect(_)
             model = tensorflow.keras.Sequential([tensorflow.keras.models.load_model('ocrDigit'), tensorflow.keras.layers.Softmax()])
-            predictions = model.predict(numpy.array([cv2.resize(mat[y:y + h, x:x + w], shape)]))
+            predictions = model.predict(numpy.array([cv2.resize(mat[y:y + h, x:x + w], shape) / 255]))
             cv2.imwrite(f'{index}.png', cv2.resize(mat[y:y + h, x:x + w], shape))
             print([numpy.argmax(_) for _ in predictions])
         await page.screenshot(path='hahaha.png')
