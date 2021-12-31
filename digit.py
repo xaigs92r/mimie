@@ -1,4 +1,4 @@
-import asyncio, playwright.async_api, cv2, numpy, argparse
+import asyncio, playwright.async_api, cv2, numpy, argparse, tensorflow
 
 parser = argparse.ArgumentParser()
 parser.add_argument('password')
@@ -14,8 +14,8 @@ async def main():
         await email.fill('chaowen.guo1@gmail.com')        
         await page.fill('input#Password', parser.parse_args().password)
         mat = cv2.imdecode(numpy.frombuffer(await page.locator('img#Captcha2_CaptchaImage').screenshot(), numpy.uint8), 0)
-        mat = cv2.threshold(mat, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-        #mat = cv2.morphologyEx(mat, cv2.MORPH_CLOSE, None)
+        mat = cv2.threshold(mat, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+        mat = cv2.morphologyEx(mat, cv2.MORPH_CLOSE, None)
         cv2.imwrite('haha.png', mat)
         await page.screenshot(path='hahaha.png')
         await browser.close()
