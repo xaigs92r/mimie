@@ -1,4 +1,4 @@
-import asyncio, playwright.async_api, cv2, numpy, argparse, tensorflow, operator
+import asyncio, playwright.async_api, cv2, numpy, argparse, tensorflow, operator, json
 
 parser = argparse.ArgumentParser()
 parser.add_argument('password')
@@ -19,7 +19,7 @@ async def main():
         shape = tensorflow.keras.datasets.mnist.load_data()[0][0].shape[1:]
         aa = sorted((cv2.boundingRect(_) for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]), key=operator.itemgetter(0))
         x,y,w,h = aa[0]
-        print(cv2.resize(mat[y:y + h, x:x + w], shape))
+        print(json.dumps(cv2.resize(mat[y:y + h, x:x + w], shape)))
         
         
         #for index, _ in enumerate(sorted(cv2.boundingRect(_) for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0], key=lambda _:_[0])):
