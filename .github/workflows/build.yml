@@ -179,7 +179,7 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
-              pip install playwright opencv-python
+              pip install playwright opencv-python tensorflow
               playwright install ffmpeg
               xvfb-run python digit.py ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
