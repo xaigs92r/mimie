@@ -186,5 +186,4 @@ jobs:
           with:
               path: |
                   videos
-                  haha.png
-                  hahaha.png
+                  *.png
