@@ -18,6 +18,9 @@ async def main():
         mat = cv2.morphologyEx(mat, cv2.MORPH_CLOSE, None)
         cv2.imwrite('haha.png', mat)
         await page.screenshot(path='hahaha.png')
+        #model = tensorflow.keras.Sequential([tensorflow.keras.models.load_model('ocrDigit'), tensorflow.keras.layers.Softmax()])
+        #predictions = model.predict(numpy.array([x_test[0]]))
+        #[numpy.argmax(_) for _ in predictions]
         await browser.close()
 
 asyncio.run(main())
