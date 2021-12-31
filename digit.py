@@ -21,7 +21,7 @@ async def main():
             x,y,w,h = cv2.boundingRect(_)
             model = tensorflow.keras.Sequential([tensorflow.keras.models.load_model('ocrDigit'), tensorflow.keras.layers.Softmax()])
             predictions = model.predict(numpy.array([cv2.resize(mat[y:y + h, x:x + w], shape)]))
-            cv2.imwrite(f'{index}.png', mat[y:y + h, x:x + w], shape))
+            cv2.imwrite(f'{index}.png', cv2.resize(mat[y:y + h, x:x + w], shape))
             print([numpy.argmax(_) for _ in predictions])
         await page.screenshot(path='hahaha.png')
         await browser.close()
