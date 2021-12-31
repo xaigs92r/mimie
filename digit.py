@@ -17,7 +17,7 @@ async def main():
         mat = cv2.threshold(mat, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
         mat = cv2.morphologyEx(mat, cv2.MORPH_OPEN, None)     
         shape = tensorflow.keras.datasets.mnist.load_data()[0][0].shape[1:]
-        print(sorted(cv2.boundingRect(_) for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0], key=operator.itemgetter(0)))
+        print(sorted((cv2.boundingRect(_) for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]), key=operator.itemgetter(0)))
         
         #for index, _ in enumerate(sorted(cv2.boundingRect(_) for _ in cv2.findContours(mat, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0], key=lambda _:_[0])):
         #    x,y,w,h = _
