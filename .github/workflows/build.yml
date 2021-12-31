@@ -172,16 +172,20 @@ jobs:
         #if: github.event.action == 'ptc'
         steps:
         - uses: actions/checkout@main
-        - uses: actions/setup-python@main
+        - uses: actions/setup-java@main
           with:
-              python-version: 3.x
+              java-version: 17.x
+              distribution: zulu
         - env:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
-              pip install playwright opencv-python tensorflow
-              playwright install ffmpeg
-              xvfb-run python digit.py ${{secrets.PASSWORD}}
+              sudo apt update
+              sudo apt install -y --no-install-recommends libopencv-dev tesseract-ocr
+              gradle --warning-mode all copyDependencies
+              java -cp copyDependencies/`ls copyDependencies/playwright-*.jar`:copyDependencies/* com.microsoft.playwright.CLI install ffmpeg
+              javac -cp /usr/share/java/opencv.jar:copyDependencies/* Main.java || true
+              xvfb-run java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/opencv.jar:copyDependencies/*:. Main ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
               path: |
