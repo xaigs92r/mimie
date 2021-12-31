@@ -23,7 +23,7 @@ public class Main
                 tesseract.setOcrEngineMode(1);
                 final var matOfByte = new org.opencv.core.MatOfByte();
                 org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, matOfByte);
-                page.fill("input#Captcha2_CaptchaTextBox", tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray()))).replaceAll("[^\\d]", ""));
+                page.fill("input#Captcha2_CaptchaTextBox", tesseract.doOCR(javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(matOfByte.toArray()))));
                 page.waitForNavigation(() -> page.click("input#Button1_input"));
                 page.waitForNavigation(() -> page.click("a[href='ads']"));
                 final var ads = page.locator("a[rel]");
