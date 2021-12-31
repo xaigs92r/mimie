@@ -1,4 +1,5 @@
 on:
+    push:
     schedule:
     - cron: '0 */6 * * *'
     repository_dispatch:
@@ -168,23 +169,22 @@ jobs:
               git push
     ptc:
         runs-on: ubuntu-latest
-        if: github.event.action == 'ptc'
+        #if: github.event.action == 'ptc'
         steps:
         - uses: actions/checkout@main
-        - uses: actions/setup-java@main
+        - uses: actions/setup-python@main
           with:
-              java-version: 17.x
-              distribution: zulu
+              python-version: 3.x
         - env:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
-              sudo apt update
-              sudo apt install -y --no-install-recommends libopencv-dev tesseract-ocr
-              gradle --warning-mode all copyDependencies
-              java -cp copyDependencies/`ls copyDependencies/playwright-*.jar`:copyDependencies/* com.microsoft.playwright.CLI install ffmpeg
-              javac -cp /usr/share/java/opencv.jar:copyDependencies/* Main.java || true
-              xvfb-run java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/opencv.jar:copyDependencies/*:. Main ${{secrets.PASSWORD}}
+              pip install playwright opencv-python
+              playwright install ffmepg
+              xvfb-run python digit.py ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
-              path: videos
+              path: |
+                  videos
+                  haha.png
+                  hahaha.png
