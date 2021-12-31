@@ -9,7 +9,6 @@ repositories {
 dependencies {
     implementation 'com.microsoft.playwright:playwright:latest.release'
     implementation 'net.sourceforge.tess4j:tess4j:latest.release'
-    implementation 'org.tensorflow:tensorflow-core-api:latest.release'
 }
 
 task copyDependencies(type: Copy) {
