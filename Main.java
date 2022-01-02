@@ -19,6 +19,7 @@ public class Main
                 org.opencv.imgproc.Imgproc.morphologyEx(mat, mat, org.opencv.imgproc.Imgproc.MORPH_CLOSE, new org.opencv.core.Mat());
                 final var tesseract = new net.sourceforge.tess4j.Tesseract();
                 tesseract.setDatapath("/usr/share/tesseract-ocr/4.00/tessdata");
+                tesseract.setTessVariable("tessedit_char_whitelist", "0123456789");
                 tesseract.setPageSegMode(7);
                 tesseract.setOcrEngineMode(1);
                 final var matOfByte = new org.opencv.core.MatOfByte();
