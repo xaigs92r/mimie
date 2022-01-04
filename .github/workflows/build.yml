@@ -1,4 +1,5 @@
 on:
+    push:
     schedule:
     - cron: '0 */6 * * *'
     repository_dispatch:
@@ -153,7 +154,7 @@ jobs:
               node cron.js ${{secrets.GITHUB}}
     google:
         runs-on: ubuntu-latest
-        if: github.event_name == 'dummy'
+        if: github.event_name == 'push'
         steps:
         - uses: actions/checkout@main
         - run: |
@@ -161,11 +162,11 @@ jobs:
               chmod 400 key
               rm -rf google-chrome
               scp -o StrictHostKeyChecking=no -i key -r ubuntu@20.112.94.147:.config/google-chrome .
-              git add -A
+              git add google-chrome
               git config user.name dummy
               git config user.email dummy
               git commit --allow-empty-message -m ''
-              git push -f
+              git push
     ptc:
         runs-on: ubuntu-latest
         if: github.event.action == 'ptc'
