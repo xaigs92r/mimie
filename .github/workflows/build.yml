@@ -1,4 +1,5 @@
 on:
+    push:
     schedule:
     - cron: '0 */6 * * *'
     repository_dispatch:
@@ -153,7 +154,7 @@ jobs:
               node cron.js ${{secrets.GITHUB}}
     google:
         runs-on: ubuntu-latest
-        if: github.event_name == 'dummy'
+        if: github.event_name == 'push'
         steps:
         - uses: actions/checkout@main
         - run: |
@@ -165,7 +166,7 @@ jobs:
               git config user.name dummy
               git config user.email dummy
               git commit --allow-empty-message -m ''
-              git push
+              git push -f
     ptc:
         runs-on: ubuntu-latest
         if: github.event.action == 'ptc'
