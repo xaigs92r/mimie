@@ -1,5 +1,5 @@
 FROM scratch
-COPY server.js package.json /usr/local/src/
+COPY server.js package.json pipclient /usr/local/src/
 COPY node_modules /usr/local/src/node_modules/
 ENV github
 ENV GITHUB_REPOSITORY
