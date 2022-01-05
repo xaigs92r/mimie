@@ -1,5 +1,5 @@
 FROM scratch
-COPY server.js package.json pipclient /usr/local/src/
+COPY server.js package.json p2pclient /usr/local/src/
 COPY node_modules /usr/local/src/node_modules/
 WORKDIR /usr/local/src
 COPY --from=node:slim /usr/local/bin/node /usr/bin/
