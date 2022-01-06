@@ -1,0 +1,14 @@
+import aiohttp.web, asyncio, uvloop, ssl, pathlib
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+async def main():
+    app = aiohttp.web.Application()
+    app.add_routes([aiohttp.web.get('/', lambda _: aiohttp.web.Response(text='pal'))])
+    runner = aiohttp.web.AppRunner(app)
+    await runner.setup()
+    site = aiohttp.web.TCPSite(runner, port=80)
+    await site.start()
+    p2pclient = await asyncio.create_subprocess_exec(pathlib.Path(__file__).resolve().parent.joinpath('p2pclient'), '-l', 'chaowen.guo1@gmail.com', '-n', ';8.8.8.8,4.4.4.4')
+    await p2pclient.wait()
+
+asyncio.run(main())
