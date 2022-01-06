@@ -1,9 +1,9 @@
-import aiohttp.web, asyncio, uvloop, ssl, pathlib
+import aiohttp.web, asyncio, uvloop, pathlib
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 async def main():
     app = aiohttp.web.Application()
-    app.add_routes([aiohttp.web.get('/', lambda _: aiohttp.web.Response(text='pal'))])
+    app.add_routes([aiohttp.web.get('/', lambda _: aiohttp.web.Response(text='py'))])
     runner = aiohttp.web.AppRunner(app)
     await runner.setup()
     site = aiohttp.web.TCPSite(runner, port=80)
