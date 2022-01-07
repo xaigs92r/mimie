@@ -36,7 +36,7 @@ jobs:
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/clean.py | python - ${{secrets.GITHUB_TOKEN}} 
     subscribe:
         runs-on: ubuntu-latest
-        #if: github.event.action == 'subscribe'
+        if: github.event.action == 'subscribe'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
@@ -170,7 +170,7 @@ jobs:
               git push -f
     ptc:
         runs-on: ubuntu-latest
-        #if: github.event.action == 'ptc'
+        if: github.event.action == 'ptc'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-java@main
