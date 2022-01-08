@@ -1,60 +1,17 @@
+import java.io.Closeable;
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.nio.channels.AsynchronousServerSocketChannel;
+import java.nio.channels.AsynchronousSocketChannel;
+import java.nio.channels.CompletionHandler;
+import java.util.HashMap;
+import java.util.Map;
 
-public class NioServer
+public class Server
 {
-    //保存客户端连接
-    static List<SocketChannel> channelList = new ArrayList<>();
-
-    public static void main(String[] args) throws Exception {
-
-        // 创建 NIO ServerSocketChannel，与 BIO ServerSocket 类似
-        ServerSocketChannel serverSocket = ServerSocketChannel.open();
-        serverSocket.socket().bind(new InetSocketAddress(9000));
-        // 设置 ServerSocketChannel 为非阻塞
-        serverSocket.configureBlocking(false);
-        // 打开Selector处理Channel，即创建epoll
-        Selector selector = Selector.open();
-        // 把 ServerSocketChannel 注册到 selector 上，并且 让selector监听 客户端accept 事件
-        SelectionKey selectionKey = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
-        System.out.println("服务启动成功");
-
-        while (true) {
-            // 阻塞等待需要处理的事件发生
-            selector.select();
-
-            // 获取selector中注册的全部事件 的 SelectionKey 实例
-            Set<SelectionKey> selectionKeys = selector.selectedKeys();
-            Iterator<SelectionKey> skIterator = selectionKeys.iterator();
-
-            while (skIterator.hasNext()){
-                SelectionKey key = skIterator.next();
-                // 如果是 OP_ACCEPT 事件，则进行连接获取和时间注册
-                if (key.isAcceptable()){
-                    ServerSocketChannel server = (ServerSocketChannel) key.channel();
-                    SocketChannel socketChannel = server.accept();
-                    socketChannel.configureBlocking(false);
-                    SelectionKey selKey = socketChannel.register(selector, SelectionKey.OP_READ);
-                    System.out.println("客户端连接成功");
-                }else if (key.isReadable()){ // 如果是 OP_READ 事件 ，则进行读写和打印
-                    SocketChannel socketChannel = (SocketChannel) key.channel();
-                    ByteBuffer byteBuffer = ByteBuffer.allocate(128);
-                    int len = socketChannel.read(byteBuffer);
-                    // 如果有数据，把数据打印出来
-                    if (len > 0){
-                        System.out.println("接收到消息：" + new String(byteBuffer.array(),0,len));
-                    }else if (len == -1){
-                        System.out.println("客户端断开连接");
-                    }
-                }
-                // 从事件集合里删除本次处理的key，防止下次select重复处理
-                skIterator.remove();
-            }
-        }
-    }
-}
+    final String LOCALHOST = "localhost"; 
+    final int DEFAULT_PORT = 8888; 
+    AsynchronousServerSocketChannel serverChannel; 
+    private void close(Closeable closeable)
+    { if(closeable != null){ try { closeable.close(); } catch (IOException e) { e.printStackTrace(); } } } public void start(){ try { // 打开通道 serverChannel = AsynchronousServerSocketChannel.open(); // 绑定、监听端口 serverChannel.bind(new InetSocketAddress(DEFAULT_PORT)); System.out.println("启动服务器，监听端口："+DEFAULT_PORT+"..."); while(true){ // 异步调用 serverChannel.accept(null,new AcceptHandler()); // 不会频繁调用accept的小技巧 System.in.read(); } } catch (IOException e) { e.printStackTrace(); } finally{ close(serverChannel); } } private class AcceptHandler implements CompletionHandler<AsynchronousSocketChannel , Object> { @Override public void completed(AsynchronousSocketChannel result, Object attachment) { //此次调用accept完成，再一次调用accept，等待下一个客户端连接 if(serverChannel.isOpen()) { serverChannel.accept(null , this); } AsynchronousSocketChannel clientChannel = result; if(clientChannel != null && clientChannel.isOpen()){ ClientHandler handler = new ClientHandler(clientChannel); ByteBuffer buffer = ByteBuffer.allocate(1024); Map<String , Object> info = new HashMap<>(); info.put("type", "read"); info.put("buffer" , buffer); clientChannel.read(buffer , info, handler); } } @Override public void failed(Throwable exc, Object attachment) { // 处理错误 } } private class ClientHandler implements CompletionHandler<Integer , Object>{ private AsynchronousSocketChannel clientChannel; public ClientHandler(AsynchronousSocketChannel channel){ this.clientChannel = channel; } @Override public void completed(Integer result, Object attachment) { Map<String , Object> info = (Map<String, Object>) attachment; String type = (String) info.get("type"); if(type.equals("read")){ ByteBuffer buffer = (ByteBuffer) info.get("buffer"); // 读模式 buffer.flip(); info.put("type" , "write"); clientChannel.write(buffer ,info , this); // 写模式(也相当于清空) buffer.clear(); } else if(type.equals("write")){ ByteBuffer buffer = ByteBuffer.allocate(1024); info.put("type" , "read"); info.put("buffer" , buffer); clientChannel.read(buffer , info , this); } } @Override public void failed(Throwable exc, Object attachment) { // 处理错误 } } public static void main(String[] args) { Server server = new Server(); server.start(); } }
