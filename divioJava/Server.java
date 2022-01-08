@@ -11,7 +11,7 @@ public class Server
                               server.accept(null, this);
 			      try
 			      {
-		                  channel.write(java.nio.ByteBuffer.wrap("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nhaha".getBytes())).get();
+		                  channel.write(java.nio.ByteBuffer.wrap("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\njava".getBytes())).get();
 		                  channel.close();
 			      }
 			      catch (final java.lang.Exception e) {}
