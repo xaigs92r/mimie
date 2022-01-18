@@ -22,7 +22,7 @@ const subscribe = await context.newPage()
         await globalThis.Promise.all([subscribe.waitForNavigation(), subscribe.click('a[onclick^="confirmAll"]')])
     }
 }*/
-await subscribe.goto('https://www.subscribers.video/signin.html')
+await subscribe.goto('https://www.submenow.com/signin.html')
 await subscribe.fill('input#inputEmail', 'chaowen.guo1@gmail.com')
 await subscribe.fill('input#inputIdChannel', 'UCkKr6PX7hPxw0E7vYXeDbvg')
 await subscribe.click('button#buttonSignIn')
