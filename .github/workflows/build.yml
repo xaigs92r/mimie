@@ -37,6 +37,7 @@ jobs:
     subscribe:
         runs-on: ubuntu-latest
         #if: github.event.action == 'subscribe'
+        if: github.event_name == 'push'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
