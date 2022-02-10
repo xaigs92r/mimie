@@ -26,8 +26,8 @@ await subscribe.goto('https://www.subscribers.video/signin.html')
 await subscribe.fill('input#inputEmail', 'chaowen.guo1@gmail.com')
 await subscribe.fill('input#inputIdChannel', 'UCkKr6PX7hPxw0E7vYXeDbvg')
 await subscribe.click('button#buttonSignIn')
-await subscribe.click('button#buttonPlan5')
-for (const _ of globalThis.Array(20).keys())
+await subscribe.click('button#buttonPlan6')
+for (const _ of globalThis.Array(30).keys())
 {
     const [popup] = await globalThis.Promise.all([subscribe.waitForEvent('popup'), subscribe.click('button#btnWatchLikeAndSubscribe')])
     try
