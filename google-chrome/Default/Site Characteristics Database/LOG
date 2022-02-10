@@ -1,3 +1,13 @@
-2022/01/04-07:23:36.007 610 Reusing MANIFEST /home/ubuntu/.config/google-chrome/Default/Site Characteristics Database/MANIFEST-000001
-2022/01/04-07:23:36.007 610 Recovering log #3
-2022/01/04-07:23:36.008 610 Reusing old log /home/ubuntu/.config/google-chrome/Default/Site Characteristics Database/000003.log 
+2022/02/10-21:51:40.596 10cefe Recovering log #12
+2022/02/10-21:51:40.596 10cefe Level-0 table #14: started
+2022/02/10-21:51:40.602 10cefe Level-0 table #14: 211 bytes OK
+2022/02/10-21:51:40.609 10cefe Delete type=3 #10
+2022/02/10-21:51:40.610 10cefe Delete type=0 #12
+2022/02/10-21:51:40.611 10cefb Compacting 4@0 + 0@1 files
+2022/02/10-21:51:40.629 10cefb Generated table #16@0: 4 keys, 302 bytes
+2022/02/10-21:51:40.629 10cefb Compacted 4@0 + 0@1 files => 302 bytes
+2022/02/10-21:51:40.631 10cefb compacted to: files[ 0 1 0 0 0 0 0 ]
+2022/02/10-21:51:40.631 10cefb Delete type=2 #6
+2022/02/10-21:51:40.631 10cefb Delete type=2 #14
+2022/02/10-21:51:40.632 10cefb Delete type=2 #11
+2022/02/10-21:51:40.632 10cefb Delete type=2 #3

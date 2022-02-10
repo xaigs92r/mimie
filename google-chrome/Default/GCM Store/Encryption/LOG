@@ -1,3 +1,5 @@
-2022/01/04-07:23:42.839 60f Reusing MANIFEST /home/ubuntu/.config/google-chrome/Default/GCM Store/Encryption/MANIFEST-000001
-2022/01/04-07:23:42.839 60f Recovering log #3
-2022/01/04-07:23:42.839 60f Reusing old log /home/ubuntu/.config/google-chrome/Default/GCM Store/Encryption/000003.log 
+2022/02/10-21:51:51.411 10cf27 Recovering log #10
+2022/02/10-21:51:51.636 10cf27 Level-0 table #12: started
+2022/02/10-21:51:51.641 10cf27 Level-0 table #12: 360 bytes OK
+2022/02/10-21:51:51.649 10cf27 Delete type=0 #10
+2022/02/10-21:51:51.649 10cf27 Delete type=3 #9

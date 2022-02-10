@@ -1,3 +1,13 @@
-2022/01/04-07:23:38.054 60f Reusing MANIFEST /home/ubuntu/.config/google-chrome/Default/shared_proto_db/MANIFEST-000001
-2022/01/04-07:23:38.055 60f Recovering log #3
-2022/01/04-07:23:38.055 60f Reusing old log /home/ubuntu/.config/google-chrome/Default/shared_proto_db/000003.log 
+2022/02/10-21:51:42.462 10cf30 Recovering log #13
+2022/02/10-21:51:42.462 10cf30 Level-0 table #15: started
+2022/02/10-21:51:42.465 10cf30 Level-0 table #15: 139 bytes OK
+2022/02/10-21:51:42.472 10cf30 Delete type=3 #11
+2022/02/10-21:51:42.472 10cf30 Delete type=0 #13
+2022/02/10-21:51:42.472 10cf30 Compacting 4@0 + 0@1 files
+2022/02/10-21:51:42.510 10cf30 Generated table #17@0: 19 keys, 826 bytes
+2022/02/10-21:51:42.510 10cf30 Compacted 4@0 + 0@1 files => 826 bytes
+2022/02/10-21:51:42.512 10cf30 compacted to: files[ 0 1 0 0 0 0 0 ]
+2022/02/10-21:51:42.512 10cf30 Delete type=2 #6
+2022/02/10-21:51:42.512 10cf30 Delete type=2 #12
+2022/02/10-21:51:42.512 10cf30 Delete type=2 #15
+2022/02/10-21:51:42.512 10cf30 Delete type=2 #3

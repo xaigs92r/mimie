@@ -1,3 +1,5 @@
-2022/01/04-07:23:37.035 625 Reusing MANIFEST /home/ubuntu/.config/google-chrome/Default/Session Storage/MANIFEST-000001
-2022/01/04-07:23:37.036 625 Recovering log #3
-2022/01/04-07:23:37.037 625 Reusing old log /home/ubuntu/.config/google-chrome/Default/Session Storage/000003.log 
+2022/02/10-21:51:41.133 10cf25 Recovering log #13
+2022/02/10-21:51:41.134 10cf25 Level-0 table #16: started
+2022/02/10-21:51:41.138 10cf25 Level-0 table #16: 261 bytes OK
+2022/02/10-21:51:41.147 10cf25 Delete type=3 #11
+2022/02/10-21:51:41.148 10cf25 Delete type=0 #13

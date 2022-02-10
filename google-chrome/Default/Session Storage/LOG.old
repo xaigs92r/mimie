@@ -1,3 +1,13 @@
-2022/01/04-07:19:37.911 640 Reusing MANIFEST /home/ubuntu/.config/google-chrome/Default/Session Storage/MANIFEST-000001
-2022/01/04-07:19:37.912 640 Recovering log #3
-2022/01/04-07:19:37.912 640 Reusing old log /home/ubuntu/.config/google-chrome/Default/Session Storage/000003.log 
+2022/02/10-21:46:58.518 10c936 Recovering log #10
+2022/02/10-21:46:58.523 10c936 Level-0 table #12: started
+2022/02/10-21:46:58.531 10c936 Level-0 table #12: 611 bytes OK
+2022/02/10-21:46:58.541 10c936 Delete type=3 #8
+2022/02/10-21:46:58.541 10c936 Delete type=0 #10
+2022/02/10-21:46:58.542 10c939 Compacting 4@0 + 0@1 files
+2022/02/10-21:46:58.768 10c939 Generated table #14@0: 2 keys, 144 bytes
+2022/02/10-21:46:58.775 10c939 Compacted 4@0 + 0@1 files => 144 bytes
+2022/02/10-21:46:58.779 10c939 compacted to: files[ 0 1 0 0 0 0 0 ]
+2022/02/10-21:46:58.787 10c939 Delete type=2 #6
+2022/02/10-21:46:58.788 10c939 Delete type=2 #12
+2022/02/10-21:46:58.788 10c939 Delete type=2 #9
+2022/02/10-21:46:58.788 10c939 Delete type=2 #3

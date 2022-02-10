@@ -1,3 +1,5 @@
-2022/01/04-07:23:37.758 612 Reusing MANIFEST /home/ubuntu/.config/google-chrome/Default/Service Worker/Database/MANIFEST-000001
-2022/01/04-07:23:37.758 612 Recovering log #3
-2022/01/04-07:23:37.758 612 Reusing old log /home/ubuntu/.config/google-chrome/Default/Service Worker/Database/000003.log 
+2022/02/10-21:51:41.224 10cf27 Recovering log #13
+2022/02/10-21:51:41.224 10cf27 Level-0 table #15: started
+2022/02/10-21:51:41.224 10cf27 Level-0 table #15: 0 bytes OK
+2022/02/10-21:51:41.231 10cf27 Delete type=3 #11
+2022/02/10-21:51:41.231 10cf27 Delete type=0 #13

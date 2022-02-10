@@ -1,3 +1,5 @@
-2022/01/04-07:23:38.053 60f Reusing MANIFEST /home/ubuntu/.config/google-chrome/Default/shared_proto_db/metadata/MANIFEST-000001
-2022/01/04-07:23:38.053 60f Recovering log #3
-2022/01/04-07:23:38.053 60f Reusing old log /home/ubuntu/.config/google-chrome/Default/shared_proto_db/metadata/000003.log 
+2022/02/10-21:51:42.449 10cf30 Recovering log #13
+2022/02/10-21:51:42.449 10cf30 Level-0 table #16: started
+2022/02/10-21:51:42.452 10cf30 Level-0 table #16: 147 bytes OK
+2022/02/10-21:51:42.460 10cf30 Delete type=3 #11
+2022/02/10-21:51:42.460 10cf30 Delete type=0 #13
