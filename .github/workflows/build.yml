@@ -224,8 +224,8 @@ jobs:
               curl https://updates.peer2profit.com/p2pclient_0.56_amd64.deb > p2pclient.deb
               dpkg --fsys-tarfile p2pclient.deb | tar xf - ./usr/bin/p2pclient
               gradle -p divioJava --warning-mode all copyDependencies
-              ls -al divio
-              javac -Xlint:deprecation -cp copyDependencies/*:. Server.java
+              javac -Xlint:deprecation -cp divioJava/copyDependencies/*:. divioJava/Server.java
+              ls -al divioJava
               mv usr/bin/p2pclient divioJava/Dockerfile divioJava/Server.java java
               cd java
               git add -A
