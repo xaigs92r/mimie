@@ -207,13 +207,15 @@ jobs:
         if: github.event_name == 'dummy'
         steps:
         - uses: actions/checkout@main
-        - uses: actions/setup-node@main
+        - uses: actions/setup-java@main
           with:
-              node-version: 17.x
-        - run: curl https://${GITHUB_REPOSITORY%/*}.github.io/common/version.js | node --input-type=module
-        - uses: actions/setup-node@main
+              java-version: 17.x
+              distribution: zulu
+        - run: curl https://${GITHUB_REPOSITORY%/*}.github.io/common/version.jsh | jshell -
+        - uses: actions/setup-java@main
           with:
-              node-version: ${{env.JS}}
+              java-version: ${{env.JAVA}}
+              distribution: zulu
         - run: |
               curl https://${{secrets.GITHUB}}@raw.githubusercontent.com/chaowenGUO/server/main/key > key
               chmod 400 key
