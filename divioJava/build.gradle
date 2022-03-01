@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.vertx:vertx-core:latest.release'
+}
+
+task copyDependencies(type: Copy) {
+    from configurations.default into 'copyDependencies'
+}
