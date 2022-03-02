@@ -1,5 +1,4 @@
 on:
-    push:
     schedule:
     - cron: '0 */6 * * *'
     repository_dispatch:
@@ -55,7 +54,7 @@ jobs:
               path: videos
     divio:
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
+        if: github.event_name == 'dummy'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
@@ -75,7 +74,6 @@ jobs:
               dpkg --fsys-tarfile p2pclient.deb | tar xf - ./usr/bin/p2pclient
               mv usr/bin/p2pclient divio/Dockerfile divio/server.js js
               cd js
-              ls -al
               git add -A
               git config user.email dummy
               git config user.name dummy
