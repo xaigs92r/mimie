@@ -12,6 +12,7 @@ await colab.goto('https://www.intel.com/content/www/us/en/my-intel/devcloud-sign
 await colab.fill('input#txtUsername', 'chaowen.guo1@gmail.com')
 await colab.fill('input#txtPassword', process.argv.at(2))
 await globalThis.Promise.all([colab.waitForNavigation(), colab.click('input#formSubmit')])
-//await colab.goto('https://notebooks.edge.devcloud.intel.com/user/u126480/lab')
+await colab.waitForTimeout(20 * 1000)
+await colab.goto('https://notebooks.edge.devcloud.intel.com/user/u126480/lab')
 await colab.waitForTimeout(10 * 1000)
 await context.close()
