@@ -22,7 +22,7 @@ for (const _ of ['sonuker', 'subpals', 'ytpals'])
         await globalThis.Promise.all([subscribe.waitForNavigation(), subscribe.click('a[onclick^="confirmAll"]')])
     }
 }
-await subscribe.goto('https://www.subscribers.video/signin.html')
+/*await subscribe.goto('https://www.subscribers.video/signin.html')
 await subscribe.fill('input#inputEmail', 'chaowen.guo1@gmail.com')
 await subscribe.fill('input#inputIdChannel', 'UCkKr6PX7hPxw0E7vYXeDbvg')
 await subscribe.click('button#buttonSignIn')
@@ -39,4 +39,4 @@ for (const _ of globalThis.Array(30).keys())
     await popup.close()
     await globalThis.Promise.all([subscribe.waitForNavigation(), subscribe.click('button#btnSubVerify')])
 }
-await context.close()
+await context.close()*/
