@@ -38,5 +38,5 @@ for (const _ of globalThis.Array(30).keys())
     await subscribe.waitForTimeout(1000 * 20)
     await popup.close()
     await globalThis.Promise.all([subscribe.waitForNavigation(), subscribe.click('button#btnSubVerify')])
-}
-await context.close()*/
+}*/
+await context.close()
