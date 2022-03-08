@@ -1,5 +1,4 @@
 on:
-    push:
     schedule:
     - cron: '0 */1 * * *'
     - cron: '0 */6 * * *'
@@ -135,7 +134,7 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
-              npm install playwright-chromium
+              npm install playwright-chromiumdummy
               npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               xvfb-run node colab.js ${{secrets.PASSWORD}}
@@ -226,7 +225,7 @@ jobs:
               gcloud --log-http app deploy gcloudApp/app.yaml
     divioJava:
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
+        if: github.event_name == 'dummy'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-java@main
