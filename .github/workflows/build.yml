@@ -1,7 +1,9 @@
 on:
+    push:
     schedule:
     - cron: '0 */1 * * *'
     - cron: '0 */6 * * *'
+    - cron: '0 0 1 * *'
     repository_dispatch:
     
 jobs:
@@ -26,7 +28,7 @@ jobs:
               path: videos
     clean:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */6 * * *'
+        if: github.event.schedule == '0 0 1 * *'
         steps:
         - uses: actions/setup-python@main
           with:
@@ -224,7 +226,7 @@ jobs:
               gcloud --log-http app deploy gcloudApp/app.yaml
     divioJava:
         runs-on: ubuntu-latest
-        if: github.event_name == 'dummy'
+        if: github.event_name == 'push'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-java@main
