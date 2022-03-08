@@ -16,7 +16,7 @@ jobs:
               node-version: 17.x
         - env:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-              DEBUG: pw:apidummy
+              DEBUG: pw:api
           run: |
               npm install playwright-chromium
               npx playwright install ffmpeg
@@ -134,7 +134,7 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
-              npm install playwright-chromiumdummy
+              npm install playwright-chromium
               npx playwright install ffmpeg
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
               xvfb-run node colab.js ${{secrets.PASSWORD}}
