@@ -171,7 +171,7 @@ jobs:
         - run: |
               echo '${{secrets.GCLOUD}}' > gcloud
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
-              npm install google-auth-librarydummy node-fetch
+              npm install google-auth-library node-fetch
               node cron.js ${{secrets.GITHUB}}
     googleAccount:
         runs-on: ubuntu-latest
