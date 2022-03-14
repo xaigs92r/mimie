@@ -27,7 +27,7 @@ jobs:
               path: videos
     clean:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 0 1 * *'
+        if: github.event.schedule == '0 0 */2 * *'
         steps:
         - uses: actions/setup-python@main
           with:
