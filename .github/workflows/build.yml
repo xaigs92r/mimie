@@ -72,6 +72,7 @@ jobs:
               chmod 400 key
               git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:js
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > js/package.json
+              npm install --prefix js node-fetch
               mv divio/Dockerfile divio/server.js js
               cd js
               git add -A
