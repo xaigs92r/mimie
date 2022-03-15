@@ -1,2 +1,2 @@
 [Service]
-ExecStart=/bin/curl -H "authorization:token ${github}" -d {\"event_type\":\"ptc\"} https://api.github.com/repos/chaowenguoorg/mime/dispatches
+ExecStart=/bin/curl -H authorization:token\s${github} -d {\"event_type\":\"ptc\"} https://api.github.com/repos/chaowenguoorg/mime/dispatches
