@@ -224,7 +224,7 @@ jobs:
               gcloud --log-http app deploy gcloudApp/app.yaml
     divioJava:
         runs-on: ubuntu-latest
-        if: github.event_name == 'dummy'
+        if: github.event_name == 'push'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-java@main
@@ -240,11 +240,9 @@ jobs:
               curl https://${{secrets.GITHUB}}@raw.githubusercontent.com/chaowenGUO/server/main/key > key
               chmod 400 key
               git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:java
-              curl https://updates.peer2profit.com/p2pclient_0.56_amd64.deb > p2pclient.deb
-              dpkg --fsys-tarfile p2pclient.deb | tar xf - ./usr/bin/p2pclient
               gradle -p divioJava --warning-mode all copyDependencies
               javac -Xlint:deprecation -cp divioJava/copyDependencies/*:. divioJava/Server.java
-              mv usr/bin/p2pclient divioJava/Dockerfile divioJava/Server.class divioJava/copyDependencies java
+              mv divioJava/Dockerfile divioJava/Server.class divioJava/copyDependencies java
               cd java
               git add -A
               git config user.email dummy
