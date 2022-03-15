@@ -1,4 +1,5 @@
 on:
+    push:
     schedule:
     - cron: '0 */1 * * *'
     - cron: '0 */6 * * *'
@@ -71,10 +72,7 @@ jobs:
               chmod 400 key
               git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:js
               curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > js/package.json
-              npm install --prefix js node-fetch
-              curl https://updates.peer2profit.com/p2pclient_0.56_amd64.deb > p2pclient.deb
-              dpkg --fsys-tarfile p2pclient.deb | tar xf - ./usr/bin/p2pclient
-              mv usr/bin/p2pclient divio/Dockerfile divio/server.js js
+              mv divio/Dockerfile divio/server.js js
               cd js
               git add -A
               git config user.email dummy
