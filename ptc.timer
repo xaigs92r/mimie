@@ -1,5 +1,5 @@
 [Timer]
-OnBootSec=0h
+OnBootSec=0
 OnUnitActiveSec=25h
 
 [Install]
