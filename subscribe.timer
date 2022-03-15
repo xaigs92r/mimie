@@ -6,3 +6,4 @@ OnUnitActiveSec=13h
 WantedBy=timers.target
 #systemctl enable subscribe.timer --now #ln -s /usr/lib/systemd/system/subscribe.timer /etc/systemd/system/timers.target.wants/subscribe.timer && systemctl start subscribe.timer
 #this file should be in /usr/lib/systemd/system
+#systemctl list-timers
