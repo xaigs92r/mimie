@@ -3,7 +3,7 @@ on:
     schedule:
     - cron: '0 */1 * * *'
     - cron: '0 */6 * * *'
-    - cron: '0 0 * * *'
+    - cron: '0 */12 * * *'
     repository_dispatch:
     
 jobs:
@@ -28,7 +28,7 @@ jobs:
               path: videos
     clean:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 0 * * *'
+        #if: github.event.schedule == '0 */12 * * *'
         steps:
         - uses: actions/setup-python@main
           with:
