@@ -42,7 +42,7 @@ for (;;)
 {
     await adfreeway.waitForTimeout(1000)
     const onviewport = adfreeway.locator('div.fp.onviewport')
-    const like = onviewport.locator('input[alt="Like ugc"]')
+    const like = onviewport.locator(':scope input[alt="Like ugc"]')
     for (const _ of globalThis.Array(await like.count()).keys())
     {
         await like.nth(_).click()
