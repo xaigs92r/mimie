@@ -30,7 +30,7 @@ public class Main
                 {
                 page.waitForNavigation(() -> page.click("input#Button1_input"));
                 page.waitForNavigation(() -> page.click("a[href='ads']"));
-                final var ads = page.locator('a[rel]');
+                final var ads = page.locator("a[rel]");
                 while (ads.count() != 0)
                 {
                     final var popup = page.waitForPopup(() -> ads.first().click());
