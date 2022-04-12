@@ -33,10 +33,20 @@ await it.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await it.fill('input[name="password"]', process.argv.at(2))
 await it.click('button[name="connect"]')
 await globalThis.Promise.all([it.waitForEvent('popup'), it.click('button[onclick]')])
-/*const pro = await browser.newPage({recordVideo:{dir:'videos'}})
-await pro.goto('https://cmpro.mn-shop.com/')
-await pro.click('a.nav-link')
-await pro.fill('input#userLogin', 'chaowen.guo1@gmail.com')
-await pro.fill('input#userPass', process.argv.at(2))
-await pro.click('button[onclick^=login]')
-await globalThis.Promise.all([pro.waitForEvent('popup'), pro.click('button[onclick^=window]')])*/
+const adfreeway = await context.newPage({recordVideo:{dir:'videos'}})
+await adfreeway.goto('https://adfreeway.com/users/sign_in')
+await adfreeway.fill('input#user_email', 'chaowen.guo1@gmail.com')
+await adfreeway.fill('input#user_password', process.argv.at(2))
+await adfreeway.click('input#access-wifi-btn')
+for (;;)
+{
+    await adfreeway.waitForTimeout(1000)
+    const onviewport = adfreeway.locator('div.fp.onviewport')
+    const like = onviewport.locator('input[alt="Like ugc"]')
+    for (const _ of globalThis.Array(await like.count()).keys())
+    {
+        await like.nth(_).click()
+        await adfreeway.waitForTimeout(1000)
+    }
+    await onviewport.first().evaluateHandle(_ => _.remove())
+}
