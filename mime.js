@@ -33,7 +33,7 @@ await it.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await it.fill('input[name="password"]', process.argv.at(2))
 await it.click('button[name="connect"]')
 await globalThis.Promise.all([it.waitForEvent('popup'), it.click('button[onclick]')])*/
-const adfreeway = await context.newPage({recordVideo:{dir:'videos'}, viewport:null})
+const adfreeway = await browser.newPage({recordVideo:{dir:'videos'}, viewport:null})
 await adfreeway.goto('https://adfreeway.com/users/sign_in')
 await adfreeway.fill('input#user_email', 'chaowen.guo1@gmail.com')
 await adfreeway.fill('input#user_password', process.argv.at(2))
