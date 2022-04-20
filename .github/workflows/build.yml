@@ -3,7 +3,6 @@ on:
     schedule:
     - cron: '0 */1 * * *'
     - cron: '0 */6 * * *'
-    - cron: '0 */12 * * *'
     repository_dispatch:
     
 jobs:
@@ -25,10 +24,12 @@ jobs:
               xvfb-run node mime.js ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
-              path: videos
+              path: |
+                  videos
+                  screenshot.png
     clean:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */12 * * *'
+        if: github.event.schedule == '0 */6 * * *'
         steps:
         - uses: actions/setup-python@main
           with:
