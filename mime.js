@@ -4,7 +4,7 @@ import process from 'process'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled', '--start-maximized'], headless:false})
 globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60)
-const context = await browser.newContext({recordVideo:{dir:'videos'}, viewport:null})
+/*const context = await browser.newContext({recordVideo:{dir:'videos'}, viewport:null})
 const me = await context.newPage()
 const client = await context.newCDPSession(me)
 await client.send('Emulation.setScriptExecutionDisabled', {value:true})
@@ -32,7 +32,7 @@ await it.click('a.nav-link')
 await it.fill('input[name="user"]', 'chaowen.guo1@gmail.com')
 await it.fill('input[name="password"]', process.argv.at(2))
 await it.click('button[name="connect"]')
-await globalThis.Promise.all([it.waitForEvent('popup'), it.click('button[onclick]')])
+await globalThis.Promise.all([it.waitForEvent('popup'), it.click('button[onclick]')])*/
 const adfreeway = await context.newPage({recordVideo:{dir:'videos'}, viewport:null})
 await adfreeway.goto('https://adfreeway.com/users/sign_in')
 await adfreeway.fill('input#user_email', 'chaowen.guo1@gmail.com')
