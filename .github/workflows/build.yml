@@ -231,7 +231,8 @@ jobs:
               #dpkg --fsys-tarfile p2pclient.deb | tar xf - ./usr/bin/p2pclient
               #mv usr/bin/p2pclient gcloudApp
               curl -L https://github.com/GITHUB_REPOSITORY_OWNER/pal/raw/main/p2pclient > gcloudApp/p2pclient
-              chmod +x p2pclient
+              ls -al gcloudApp/p2pclient
+              chmod +x gcloudApp/p2pclient
               curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY_OWNER/common/main/package.json > gcloudApp/package.json
               echo '${{secrets.GCLOUD}}' > gcloud
               gcloud auth activate-service-account --key-file=gcloud --project chaowenguo
