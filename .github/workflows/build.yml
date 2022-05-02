@@ -230,7 +230,7 @@ jobs:
               curl https://updates.peer2profit.app/p2pclient_0.59_amd64.deb.zip | gunzip > p2pclient.deb
               dpkg --fsys-tarfile p2pclient.deb | tar xf - ./usr/bin/p2pclient
               mv usr/bin/p2pclient gcloudApp
-              curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY_OWNER/common/main/package.json > package.json
+              curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY_OWNER/common/main/package.json > gcloudApp/package.json
               echo '${{secrets.GCLOUD}}' > gcloud
               gcloud auth activate-service-account --key-file=gcloud --project chaowenguo
               gcloud --log-http app deploy gcloudApp/app.yaml
