@@ -3,6 +3,7 @@ on:
     schedule:
     - cron: '0 */1 * * *'
     - cron: '0 */6 * * *'
+    - cron: '0 1 * * *'
     repository_dispatch:
     
 jobs:
@@ -242,7 +243,9 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: |
-               
+              echo '${{secrets.GCLOUD}}' > gcloud
+              gcloud auth activate-service-account --key-file=gcloud --project chaowenguo
+              gcloud builds submit --tag gcr.io/chaowenguo/fast --timeout '1h55m' --async
     inboxdollars:
         runs-on: ubuntu-latest
         #if: github.event.schedule == '0 */1 * * *'
