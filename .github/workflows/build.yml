@@ -236,6 +236,13 @@ jobs:
               echo '${{secrets.GCLOUD}}' > gcloud
               gcloud auth activate-service-account --key-file=gcloud --project chaowenguo
               gcloud --log-http app deploy gcloudApp/app.yaml
+    gcloudBuild:
+        runs-on: ubuntu-latest
+        if: github.event.schedule == '0 1 * * *'
+        steps:
+        - uses: actions/checkout@main
+        - run: |
+               
     inboxdollars:
         runs-on: ubuntu-latest
         #if: github.event.schedule == '0 */1 * * *'
