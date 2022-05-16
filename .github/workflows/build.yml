@@ -135,7 +135,7 @@ jobs:
               path: videos
     colab:
         runs-on: ubuntu-latest
-        if: github.event.action == 'colab'
+        #if: github.event.action == 'colab'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
