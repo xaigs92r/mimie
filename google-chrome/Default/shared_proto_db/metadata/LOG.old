@@ -1,5 +1,2 @@
-2022/05/16-15:17:20.341 d65 Recovering log #46
-2022/05/16-15:17:20.341 d65 Level-0 table #48: started
-2022/05/16-15:17:20.344 d65 Level-0 table #48: 124 bytes OK
-2022/05/16-15:17:20.351 d65 Delete type=3 #44
-2022/05/16-15:17:20.351 d65 Delete type=0 #46
+2022/05/16-17:41:13.222 68d2 Creating DB /home/ubuntu/.config/google-chrome/Default/shared_proto_db/metadata since it was missing.
+2022/05/16-17:41:13.236 68d2 Delete type=3 #1

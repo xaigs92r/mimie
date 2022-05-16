@@ -1,5 +1,5 @@
-2022/05/16-15:25:49.265 16eb Recovering log #49
-2022/05/16-15:25:49.265 16eb Level-0 table #51: started
-2022/05/16-15:25:49.269 16eb Level-0 table #51: 171 bytes OK
-2022/05/16-15:25:49.287 16eb Delete type=0 #49
-2022/05/16-15:25:49.287 16eb Delete type=3 #47
+2022/05/16-17:46:17.375 697 Recovering log #3
+2022/05/16-17:46:17.377 697 Level-0 table #5: started
+2022/05/16-17:46:17.380 697 Level-0 table #5: 2241 bytes OK
+2022/05/16-17:46:17.386 697 Delete type=0 #3
+2022/05/16-17:46:17.387 697 Delete type=3 #2

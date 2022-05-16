@@ -1,5 +1,2 @@
-2022/05/16-15:17:23.939 d3e Recovering log #22
-2022/05/16-15:17:23.961 d3e Level-0 table #24: started
-2022/05/16-15:17:23.964 d3e Level-0 table #24: 1154 bytes OK
-2022/05/16-15:17:23.971 d3e Delete type=3 #20
-2022/05/16-15:17:23.971 d3e Delete type=0 #22
+2022/05/16-17:46:48.730 682 Creating DB /home/ubuntu/.config/google-chrome/Default/GCM Store since it was missing.
+2022/05/16-17:46:48.743 682 Delete type=3 #1

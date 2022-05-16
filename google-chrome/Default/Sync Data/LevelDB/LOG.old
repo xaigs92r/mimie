@@ -1,13 +1,2 @@
-2022/05/16-15:17:18.144 d20 Recovering log #36
-2022/05/16-15:17:18.144 d20 Level-0 table #38: started
-2022/05/16-15:17:18.186 d20 Level-0 table #38: 2059 bytes OK
-2022/05/16-15:17:18.197 d20 Delete type=0 #36
-2022/05/16-15:17:18.197 d20 Delete type=3 #34
-2022/05/16-15:17:18.198 d5d Compacting 4@0 + 0@1 files
-2022/05/16-15:17:18.226 d5d Generated table #40@0: 14 keys, 3230 bytes
-2022/05/16-15:17:18.226 d5d Compacted 4@0 + 0@1 files => 3230 bytes
-2022/05/16-15:17:18.228 d5d compacted to: files[ 0 2 0 0 0 0 0 ]
-2022/05/16-15:17:18.229 d5d Delete type=2 #29
-2022/05/16-15:17:18.229 d5d Delete type=2 #32
-2022/05/16-15:17:18.229 d5d Delete type=2 #35
-2022/05/16-15:17:18.229 d5d Delete type=2 #38
+2022/05/16-17:41:10.659 68d2 Creating DB /home/ubuntu/.config/google-chrome/Default/Sync Data/LevelDB since it was missing.
+2022/05/16-17:41:10.779 68d2 Delete type=3 #1

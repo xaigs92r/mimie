@@ -1,5 +1,2 @@
-2022/04/19-17:24:25.192 12b8d7 Recovering log #7
-2022/04/19-17:24:25.218 12b8d7 Level-0 table #9: started
-2022/04/19-17:24:25.219 12b8d7 Level-0 table #9: 0 bytes OK
-2022/04/19-17:24:25.461 12b8d7 Delete type=3 #5
-2022/04/19-17:24:25.462 12b8d7 Delete type=0 #7
+2022/05/16-17:41:17.891 68bb Creating DB /home/ubuntu/.config/google-chrome/Default/Local Extension Settings/ghbmnnjooekpmoecnnnilnnbdlolhkhi since it was missing.
+2022/05/16-17:41:17.906 68bb Delete type=3 #1
