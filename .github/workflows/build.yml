@@ -9,7 +9,7 @@ on:
 jobs:
     backup:
         runs-on: ubuntu-latest
-        if: github.event_name == 'dummy'
+        if: github.event_name == 'push'
         steps:
         - uses: actions/checkout@main
         - run: |
@@ -186,7 +186,7 @@ jobs:
               node cron.js ${{secrets.GITHUB}}
     googleAccount:
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
+        if: github.event_name == 'dummy'
         permissions:
             repository-projects: write
         steps:
