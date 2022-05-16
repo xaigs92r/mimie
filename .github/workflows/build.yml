@@ -199,7 +199,7 @@ jobs:
               git config user.name dummy
               git config user.email dummy
               git commit --allow-empty-message -m ''
-              git push -f
+              git push -f https://$GITHUB_ACTOR:${{secrets.GITHUB}}@github.com/$GITHUB_REPOSITORY.git
     ptc:
         runs-on: ubuntu-latest
         if: github.event.action == 'ptc'
