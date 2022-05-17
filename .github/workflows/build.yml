@@ -24,7 +24,7 @@ jobs:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
           with:
-              node-version: 17.x
+              node-version: 18.x
         - env:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
