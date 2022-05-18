@@ -1,7 +1,7 @@
 import {chromium} from 'playwright-chromium'
 import process from 'process'
 
-const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled', '--start-maximized'], headless:false, recordVideo:{dir:'videos'}})
+const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled', '--start-maximized'], headless:false, recordVideo:{dir:'videos'}, viewport:null})
 const subscribe = await context.newPage()
 for (const _ of ['sonuker', 'subpals', 'ytpals'])
 {     
