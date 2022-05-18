@@ -205,7 +205,7 @@ jobs:
               git push -f
     ptc:
         runs-on: ubuntu-latest
-        if: github.event.action == 'ptc'
+        if: github.event.action == '12h'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-java@main
