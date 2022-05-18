@@ -189,7 +189,8 @@ jobs:
     googleAccount:
         runs-on: ubuntu-latest
         if: github.event_name == 'dummy'
-        permissions: write-all
+        permissions:
+            contents: write
         steps:
         - uses: actions/checkout@main
         - run: |
