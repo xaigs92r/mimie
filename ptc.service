@@ -1,2 +1,4 @@
 [Service]
-ExecStart=/bin/curl -H authorization:token\s${github} -d {\"event_type\":\"ptc\"} https://api.github.com/repos/orgchaowenguo/mime/dispatches
+Type=oneshot
+ExecStart=/bin/curl -H authorization:token\s${github} -d {\"event_type\":\"12h\"} https://api.github.com/repos/chaowenguoorg0/pal/dispatches
+ExecStart=/bin/curl -H authorization:token\s${github} -d {\"event_type\":\"12h\"} https://api.github.com/repos/chaowenguoorg0/mime/dispatches
