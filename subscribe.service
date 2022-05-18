@@ -1,4 +1,0 @@
-[Service]
-ExecStart=/bin/curl -H authorization:token\s${github} -d {\"event_type\":\"subscribe\"} https://api.github.com/repos/orgchaowenguo/mime/dispatches
-#http://www.jinbuguo.com/systemd/systemd.service.html#ExecStart=
-#http://www.jinbuguo.com/systemd/systemd.service.html#%E5%91%BD%E4%BB%A4%E8%A1%8C
