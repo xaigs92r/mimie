@@ -175,7 +175,7 @@ jobs:
               path: videos
     colabCron:
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
+        if: github.event_name == 'dummy'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
@@ -188,7 +188,7 @@ jobs:
               node cron.js ${{secrets.GITHUB}}
     googleAccount:
         runs-on: ubuntu-latest
-        if: github.event_name == 'push'
+        if: github.event_name == 'dummy'
         permissions:
             contents: write
         steps:
