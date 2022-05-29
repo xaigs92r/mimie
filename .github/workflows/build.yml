@@ -175,7 +175,7 @@ jobs:
               path: videos
     colabCron:
         runs-on: ubuntu-latest
-        if: github.event_name == 'dummy'
+        if: github.event_name == 'push'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
@@ -184,7 +184,7 @@ jobs:
         - run: |
               echo '${{secrets.GCLOUD}}' > gcloud
               curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY_OWNER/common/main/package.json > package.json
-              npm install google-auth-library node-fetch
+              npm install google-auth-library
               node cron.js ${{secrets.GITHUB}}
     googleAccount:
         runs-on: ubuntu-latest
