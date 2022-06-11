@@ -62,7 +62,7 @@ subscribe:
         - videos
 
 ptc:
-    image: openjdk:slim
+    image: gradle:jdk18
     only:
         refs:
         - triggers
