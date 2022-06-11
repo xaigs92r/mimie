@@ -42,7 +42,7 @@ subscribe:
         refs:
         - triggers
         variables:
-        - $12h
+        - $twelve
     variables:
         PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
     script:
@@ -67,7 +67,7 @@ ptc:
         refs:
         - triggers
         variables:
-        - $12h
+        - $twelve
     variables:
         PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
     script:
