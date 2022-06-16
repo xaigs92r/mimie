@@ -188,7 +188,7 @@ jobs:
               node cron.js ${{secrets.GITHUB}}
     googleAccount:
         runs-on: ubuntu-latest
-        if: github.event_name == 'dummy'
+        if: github.event_name == 'push'
         permissions:
             contents: write
         steps:
