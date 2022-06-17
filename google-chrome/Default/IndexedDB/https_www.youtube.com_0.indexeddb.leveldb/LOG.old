@@ -1,0 +1,6 @@
+2022/05/29-19:07:57.447 368e1b Creating DB /home/ubuntu/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb since it was missing.
+2022/05/29-19:07:57.476 368e1b Delete type=3 #1
+2022/06/08-16:56:34.603 8080d Level-0 table #5: started
+2022/06/08-16:56:39.671 8080d Level-0 table #5: 849713 bytes OK
+2022/06/08-16:56:42.817 8080d Delete type=0 #3
+2022/06/08-16:56:43.459 8080d Manual compaction at level-0 from (begin) .. (end); will stop at (end)

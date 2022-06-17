@@ -1,0 +1,5 @@
+2022/06/16-23:44:13.583 dcd Recovering log #130
+2022/06/16-23:44:13.649 dcd Level-0 table #133: started
+2022/06/16-23:44:13.774 dcd Level-0 table #133: 547 bytes OK
+2022/06/16-23:44:13.862 dcd Delete type=0 #130
+2022/06/16-23:44:13.863 dcd Delete type=3 #92
