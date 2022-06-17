@@ -40,7 +40,7 @@ jobs:
                   screenshot.png
     clean:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */6 * * *'
+        #if: github.event.schedule == '0 */6 * * *'
         permissions:
             actions: write
         steps:
@@ -49,7 +49,7 @@ jobs:
               python-version: 3.x
         - run: |
               pip install aiohttp
-              curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY_OWNER/common/main/clean.py | python - ${{secrets.GITHUB_TOKEN}}
+              curl https://bitbucket.org/chaowenguo/common/raw/main/clean.py | python - ${{secrets.GITHUB_TOKEN}}
     subscribe:
         runs-on: ubuntu-latest
         if: github.event.action == '12h'
