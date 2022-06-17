@@ -137,7 +137,7 @@ jobs:
               path: videos
     colab:
         runs-on: ubuntu-latest
-        if: github.event.action == 'colab'
+        if: github.event.action == '10min'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
@@ -147,7 +147,7 @@ jobs:
               PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
               DEBUG: pw:api
           run: |
-              curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY_OWNER/common/main/package.json > package.json
+              curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > package.json
               npm install playwright-chromium
               npx playwright install ffmpeg
               xvfb-run node colab.js
