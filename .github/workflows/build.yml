@@ -237,7 +237,7 @@ jobs:
               #mv usr/bin/p2pclient gcloudApp
               curl https://bitbucket.org/chaowenguo/pal/raw/main/p2pclient > gcloudApp/p2pclient
               chmod +x gcloudApp/p2pclient
-              curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY_OWNER/common/main/package.json > gcloudApp/package.json
+              curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > gcloudApp/package.json
               echo '${{secrets.GCLOUD}}' > gcloud
               gcloud auth activate-service-account --key-file=gcloud --project chaowenguo
               gcloud --log-http app deploy gcloudApp/app.yaml
