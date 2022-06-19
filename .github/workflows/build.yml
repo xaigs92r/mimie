@@ -40,7 +40,7 @@ jobs:
                   screenshot.png
     clean:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */6 * * *'
+        #if: github.event.schedule == '0 */6 * * *'
         permissions:
             actions: write
         steps:
