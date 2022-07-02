@@ -183,7 +183,7 @@ jobs:
               node-version: 18.x
         - run: |
               echo '${{secrets.GCLOUD}}' > gcloud
-              curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY_OWNER/common/main/package.json > package.json
+              curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > package.json
               npm install google-auth-library
               node cron.js ${{secrets.GITHUB}}
     googleAccount:
@@ -246,10 +246,14 @@ jobs:
         if: github.event.schedule == '0 1 * * *'
         steps:
         - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 18.x
         - run: |
               echo '${{secrets.GCLOUD}}' > gcloud
-              gcloud auth activate-service-account --key-file=gcloud --project chaowenguo
-              gcloud builds submit --tag gcr.io/chaowenguo/fast --timeout '1h55m' --async
+              curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > package.json
+              npm install google-auth-library
+              node build.js
     inboxdollars:
         runs-on: ubuntu-latest
         #if: github.event.schedule == '0 */1 * * *'
