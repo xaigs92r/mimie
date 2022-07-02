@@ -241,7 +241,7 @@ jobs:
               echo '${{secrets.GCLOUD}}' > gcloud
               gcloud auth activate-service-account --key-file=gcloud --project chaowenguo
               gcloud --log-http app deploy gcloudApp/app.yaml
-    gcloudBuild:
+    gcloudRun:
         runs-on: ubuntu-latest
         if: github.event.schedule == '0 1 * * *'
         steps:
@@ -250,10 +250,12 @@ jobs:
           with:
               node-version: 18.x
         - run: |
-              echo '${{secrets.GCLOUD}}' > gcloud
-              curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > package.json
-              npm install google-auth-library
-              node build.js
+              echo '${{secrets.GCLOUD}}' > gcloudRun/gcloud
+              curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > gcloudRun/package.json
+              npm install --prefix gcloudRun google-auth-library
+              docker login -u chaowenguo -p ${{secrets.DOCKER}}
+              docker build -t chaowenguo/gcloudRun gcloudRun
+              docker push chaowenguo/gcloudRun
     inboxdollars:
         runs-on: ubuntu-latest
         #if: github.event.schedule == '0 */1 * * *'
