@@ -6,7 +6,7 @@ import process from 'process'
 const client = auth.fromJSON(globalThis.JSON.parse(await fs.readFile('gcloud')))
 client.scopes = ['https://www.googleapis.com/auth/cloud-platform']
 
-http.createServer(async (req, res) =>
+async function build()
 {
     await client.request({url:'https://cloudbuild.googleapis.com/v1/projects/chaowenguo/locations/us-central1/builds', method:'post', body:globalThis.JSON.stringify(
     {
@@ -27,5 +27,10 @@ http.createServer(async (req, res) =>
         }],
         "timeout":"6900s"
     })})
-    res.end('build')
+}
+
+http.createServer(async (req, res) => 
+{
+    await build()
+    res.end("run")
 }).listen(process.env.PORT)
