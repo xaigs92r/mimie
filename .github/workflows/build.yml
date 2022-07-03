@@ -256,7 +256,7 @@ jobs:
               cat gcloud | docker login -u _json_key --password-stdin https://gcr.io
               docker build -t gcr.io/chaowenguo/gcloudrun gcloudRun
               docker push gcr.io/chaowenguo/gcloudrun
-              node gcloudRun/cron.js
+              node gcloudRun/run.js
     inboxdollars:
         runs-on: ubuntu-latest
         #if: github.event.schedule == '0 */1 * * *'
