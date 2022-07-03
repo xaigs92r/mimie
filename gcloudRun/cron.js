@@ -1,8 +1,8 @@
 import {promises as fs} from 'fs'
 import {auth} from 'google-auth-library'
-import process from 'process'
+import path from 'path'
 
-const client = auth.fromJSON(globalThis.JSON.parse(await fs.readFile('gcloud')))
+const client = auth.fromJSON(globalThis.JSON.parse(await fs.readFile(path.join(path.dirname(new globalThis.URL(import.meta.url).pathname), 'gcloud'))))
 client.scopes = ['https://www.googleapis.com/auth/cloud-platform']
 
 const job = 'https://cloudscheduler.googleapis.com/v1/projects/chaowenguo/locations/us-central1/jobs'
