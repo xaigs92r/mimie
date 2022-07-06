@@ -250,11 +250,12 @@ jobs:
           with:
               node-version: 18.x
         - run: |
+              tar -czf gcloudRun/build.tar.gz -C gcloudRun Dockerfile
               echo '${{secrets.GCLOUD}}' > gcloudRun/gcloud
               curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > gcloudRun/package.json
               npm install --prefix gcloudRun google-auth-library
               cat gcloud | docker login -u _json_key --password-stdin https://gcr.io
-              docker build -t gcr.io/chaowenguo/gcloudrun gcloudRun
+              docker build -t gcr.io/chaowenguo/gcloudrun -f gcloudRun.Dockerfile gcloudRun
               docker push gcr.io/chaowenguo/gcloudrun
               node gcloudRun/run.js
     inboxdollars:
