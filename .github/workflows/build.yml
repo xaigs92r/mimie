@@ -255,7 +255,7 @@ jobs:
               curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > gcloudRun/package.json
               npm install --prefix gcloudRun google-auth-library
               cat gcloud | docker login -u _json_key --password-stdin https://gcr.io
-              docker build -t gcr.io/chaowenguo/gcloudrun -f gcloudRun.Dockerfile gcloudRun
+              docker build -t gcr.io/chaowenguo/gcloudrun -f gcloudRun/gcloudRun.Dockerfile gcloudRun
               docker push gcr.io/chaowenguo/gcloudrun
               node gcloudRun/run.js
     inboxdollars:
