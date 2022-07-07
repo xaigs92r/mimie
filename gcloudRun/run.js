@@ -10,5 +10,10 @@ await client.request({url:'https://us-central1-run.googleapis.com/apis/run.googl
     spec:{template:{spec:{template:{spec:{containers:[{image:'gcr.io/chaowenguo/gcloudrun'}], serviceAccountName:'chaowenguo@chaowenguo.iam.gserviceaccount.com'}}}}}
 })})
 
-const job = 'https://cloudscheduler.googleapis.com/v1/projects/chaowenguo/locations/us-central1/jobs'
-await client.request({url:job, method:'post', body:globalThis.JSON.stringify({name:new globalThis.URL(job).pathname.split('/').slice(2).join('/') + '/build', schedule:'0 0 * * *', httpTarget:{uri:'https://us-central1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/chaowenguo/jobs/build:run', oauthToken:{serviceAccountEmail:'chaowenguo@chaowenguo.iam.gserviceaccount.com'}}})})
+async function scheduler(_)
+{
+    const job = 'https://cloudscheduler.googleapis.com/v1/projects/chaowenguo/locations/us-central1/jobs'
+    await client.request({url:job, method:'post', body:globalThis.JSON.stringify({name:new globalThis.URL(job).pathname.split('/').slice(2).join('/') + _, schedule:'0 0 * * *', httpTarget:{uri:`https://us-central1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/chaowenguo/jobs/${_}:run`, oauthToken:{serviceAccountEmail:'chaowenguo@chaowenguo.iam.gserviceaccount.com'}}})})
+}
+
+await globalThis.Promise.all(['build', 'pal'].map(_ => scheduler(_)))
