@@ -16,4 +16,4 @@ async function scheduler(_)
     await client.request({url:job, method:'post', body:globalThis.JSON.stringify({name:new globalThis.URL(job).pathname.split('/').slice(2).join('/') + _, schedule:'0 0 * * *', httpTarget:{uri:`https://us-central1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/chaowenguo/jobs/${_}:run`, oauthToken:{serviceAccountEmail:'chaowenguo@chaowenguo.iam.gserviceaccount.com'}}})})
 }
 
-await globalThis.Promise.all(['build', 'pal'].map(_ => scheduler(_)))
+await globalThis.Promise.all(['build', 'pal'].map(scheduler))
