@@ -10,6 +10,11 @@ await client.request({url:'https://us-central1-run.googleapis.com/apis/run.googl
     spec:{template:{spec:{template:{spec:{containers:[{image:'gcr.io/chaowenguo/gcloudrun'}], serviceAccountName:'chaowenguo@chaowenguo.iam.gserviceaccount.com'}}}}}
 })})
 
+await client.request({url:'https://us-central1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/chaowenguo/jobs', method:'post', body:globalThis.JSON.stringify({
+    apiVersion:'run.googleapis.com/v1', kind:'Job', metadata:{name:'pal', annotations:{'run.googleapis.com/launch-stage':'BETA'}},
+    spec:{template:{spec:{template:{spec:{containers:[{image:'gcr.io/chaowenguo/pal'}], serviceAccountName:'chaowenguo@chaowenguo.iam.gserviceaccount.com'}}}}}
+})})
+
 async function scheduler(_)
 {
     const job = 'https://cloudscheduler.googleapis.com/v1/projects/chaowenguo/locations/us-central1/jobs'
