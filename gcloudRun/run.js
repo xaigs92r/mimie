@@ -12,7 +12,7 @@ await client.request({url:'https://us-central1-run.googleapis.com/apis/run.googl
 
 await client.request({url:'https://us-central1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/chaowenguo/jobs', method:'post', body:globalThis.JSON.stringify({
     apiVersion:'run.googleapis.com/v1', kind:'Job', metadata:{name:'pal', annotations:{'run.googleapis.com/launch-stage':'BETA'}},
-    spec:{template:{spec:{template:{spec:{containers:[{image:'gcr.io/chaowenguo/pal'}], serviceAccountName:'chaowenguo@chaowenguo.iam.gserviceaccount.com'}}}}}
+    spec:{template:{spec:{template:{spec:{containers:[{image:'gcr.io/chaowenguo/pal', resources:{limits:{memory:'2Gi'}}}], serviceAccountName:'chaowenguo@chaowenguo.iam.gserviceaccount.com'}}}}}
 })})
 
 async function scheduler(_)
