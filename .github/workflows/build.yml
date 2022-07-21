@@ -2,7 +2,6 @@ on:
     push:
     schedule:
     - cron: '0 */1 * * *'
-    - cron: '0 */6 * * *'
     - cron: '0 1 * * *'
     repository_dispatch:
 
@@ -40,7 +39,6 @@ jobs:
                   screenshot.png
     clean:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */6 * * *'
         permissions:
             actions: write
         steps:
@@ -299,7 +297,9 @@ jobs:
           with:
               java-version: ${{env.JAVA}}
               distribution: zulu
-        - run: |
+        - run: |Type r1nnyorg/cpp-complex-parameter-hypergeometric-function to confirm.
+
+
               curl https://${{secrets.GITHUB}}@raw.githubusercontent.com/chaowenGUO/server/main/key > key
               chmod 400 key
               git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' clone git@git.divio.com:java
