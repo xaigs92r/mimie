@@ -12,7 +12,6 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - run: |
-              echo ${{secrets.GITHUB}} | sed 's/./& /g'
               git fetch --unshallow
               echo '${{secrets.KEY}}' > key
               chmod 400 key
