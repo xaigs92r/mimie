@@ -243,7 +243,7 @@ jobs:
               gcloud --log-http app deploy gcloudApp/app.yaml
     gcloudRun:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 1 * * *'
+        if: github.event_name == 'dummy'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
