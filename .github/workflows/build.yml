@@ -197,8 +197,8 @@ jobs:
               rm -rf google-chrome
               sudo apt update
               sudo apt install -y --no-install-recommends miredo
-              ssh -o StrictHostKeyChecking=no -i key root@2a02:0180:0006:0001:0000:0000:0000:3142 rm\ -rf\ .config/google-chrome/Singleton*
-              scp -o StrictHostKeyChecking=no -i key -r root@[2a02:0180:0006:0001:0000:0000:0000:3142]:.config/google-chrome .
+              ssh -o StrictHostKeyChecking=no -i key root@2a02:180:6:1::3142 rm\ -rf\ .config/google-chrome/Singleton*
+              scp -o StrictHostKeyChecking=no -i key -r root@[2a02:180:6:1::3142]:.config/google-chrome .
               git add google-chrome
               git config user.name dummy
               git config user.email dummy
