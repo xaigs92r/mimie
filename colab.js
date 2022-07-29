@@ -3,7 +3,7 @@ import process from 'process'
 
 const context = await chromium.launchPersistentContext('google-chrome', {channel:'chrome', args:['--disable-blink-features=AutomationControlled', '--start-maximized'], headless:false, recordVideo:{dir:'videos'}, viewport:null})
 const colab = await context.newPage()
-for (const _ of ['1NG6jXbYo09JWIPDD6JpQL9XphdSbZ0B1', '1VLoQqDqeSPisGX14UBy9v3dXUtRHwrRp', '1hE2wkzqto0Y-ZmLeI5Aa5TVRd3nsrlY_'])
+for (const _ of ['1MmQ8rxXD0qWnW57Q0PEMrZL68Qm9heBg', '1VLoQqDqeSPisGX14UBy9v3dXUtRHwrRp', '1hE2wkzqto0Y-ZmLeI5Aa5TVRd3nsrlY_'])
 {
     await colab.goto(`https://colab.research.google.com/drive/${_}`)
     await colab.waitForTimeout(10 * 1000)
