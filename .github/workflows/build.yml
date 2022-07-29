@@ -1,8 +1,5 @@
 on:
     push:
-    schedule:
-    - cron: '0 */1 * * *'
-    - cron: '0 1 * * *'
     repository_dispatch:
 
 jobs:
@@ -18,7 +15,7 @@ jobs:
               git -c core.sshCommand='ssh -i key -o StrictHostKeyChecking=no' push -f git@bitbucket.org:chaowenguo/${GITHUB_REPOSITORY#*/}
     mime:
         runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */1 * * *'
+        if: github.event.action == '2h'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
