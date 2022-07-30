@@ -3,7 +3,7 @@ import os from 'os'
 import process from 'process'
 
 const browser = await chromium.launch({channel:'chrome', args:['--disable-blink-features=AutomationControlled', '--start-maximized'], headless:false})
-globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60)
+globalThis.setTimeout(async () => await browser.close(), 1000 * 60 * 60 * 2)
 /*const context = await browser.newContext({recordVideo:{dir:'videos'}, viewport:null})
 const me = await context.newPage()
 const client = await context.newCDPSession(me)
