@@ -149,25 +149,6 @@ jobs:
         - uses: actions/upload-artifact@main
           with:
               path: videos
-    devcloud:
-        runs-on: ubuntu-latest
-        if: github.event.schedule == '0 */1 * * *'
-        steps:
-        - uses: actions/checkout@main
-        - uses: actions/setup-node@main
-          with:
-              node-version: 17.x
-        - env:
-              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-              DEBUG: pw:api
-          run: |
-              npm install playwright-chromium
-              npx playwright install ffmpeg
-              curl https://${GITHUB_REPOSITORY%/*}.github.io/common/package.json > package.json
-              xvfb-run node devcloud.js ${{secrets.PASSWORD}}
-        - uses: actions/upload-artifact@main
-          with:
-              path: videos
     colabCron:
         runs-on: ubuntu-latest
         if: github.event_name == 'dummy'
@@ -194,7 +175,7 @@ jobs:
               rm -rf google-chrome
               sudo apt update
               sudo apt install -y --no-install-recommends miredo
-              ssh -o StrictHostKeyChecking=no -i key root@2a02:180:6:1::3142 rm\ -rf\ .config/google-chrome/Singleton*
+              ssh -o StrictHostKeyChecking=no -i key root@2a02:180:6:1::3142 'rm -rf .config/google-chrome/Singleton*'
               scp -o StrictHostKeyChecking=no -i key -r root@[2a02:180:6:1::3142]:.config/google-chrome .
               git add google-chrome
               git config user.name dummy
