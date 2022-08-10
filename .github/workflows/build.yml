@@ -132,7 +132,7 @@ jobs:
               path: videos
     colab:
         runs-on: ubuntu-latest
-        if: github.event.action == '15min'
+        #if: github.event.action == '15min'
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
