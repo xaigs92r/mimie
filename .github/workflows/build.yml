@@ -130,25 +130,25 @@ jobs:
         - uses: actions/upload-artifact@main
           with:
               path: videos
-    colab:
-        runs-on: ubuntu-latest
-        if: github.event.action == '10min'
-        steps:
-        - uses: actions/checkout@main
-        - uses: actions/setup-node@main
-          with:
-              node-version: 18.x
-        - env:
-              PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-              DEBUG: pw:api
-          run: |
-              curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > package.json
-              npm install playwright-chromium
-              npx playwright install ffmpeg
-              xvfb-run node colab.js
-        - uses: actions/upload-artifact@main
-          with:
-              path: videos
+    #colab:
+    #    runs-on: ubuntu-latest
+    #    if: github.event.action == '10min'
+    #    steps:
+    #    - uses: actions/checkout@main
+    #    - uses: actions/setup-node@main
+    #      with:
+    #          node-version: 18.x
+    #    - env:
+    #          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+    #          DEBUG: pw:api
+    #      run: |
+    #          curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > package.json
+    #          npm install playwright-chromium
+    #          npx playwright install ffmpeg
+    #          xvfb-run node colab.js
+    #    - uses: actions/upload-artifact@main
+    #      with:
+    #          path: videos
     colabCron:
         runs-on: ubuntu-latest
         if: github.event_name == 'dummy'
