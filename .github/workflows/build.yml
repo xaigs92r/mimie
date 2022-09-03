@@ -28,7 +28,7 @@ jobs:
               curl https://bitbucket.org/chaowenguo/common/raw/main/package.json > package.json
               npm install playwright-chromium
               npx playwright install ffmpeg
-              xvfb-run node mime.js ${{secrets.PASSWORD}}
+              timeout 110m xvfb-run node mime.js ${{secrets.PASSWORD}}
         - uses: actions/upload-artifact@main
           with:
               path: |
