@@ -243,7 +243,6 @@ jobs:
           with:
               path: |
                   videos
-
                   screenshot.png
     divioJava:
         runs-on: ubuntu-latest
